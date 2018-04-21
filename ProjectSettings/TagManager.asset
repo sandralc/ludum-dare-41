@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy
+  - Hideout
+  - Ingredient
   layers:
   - Default
   - TransparentFX
@@ -13,7 +16,7 @@ TagManager:
   - UI
   - 
   - 
-  - 
+  - Blocking Layer
   - 
   - 
   - 
@@ -40,4 +43,16 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: Map
+    uniqueID: 16376841
+    locked: 0
+  - name: Items
+    uniqueID: 1675959357
+    locked: 0
+  - name: Units
+    uniqueID: 1870834105
+    locked: 0
+  - name: Doors
+    uniqueID: 3075818117
     locked: 0
