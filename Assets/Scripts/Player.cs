@@ -41,7 +41,6 @@ public class Player : MonoBehaviour {
 		RaycastHit2D hitInfo = Physics2D.Raycast (transform.position, transform.up, actionRange);
 
 		if (IsHideoutInFrontOfPlayer (hitInfo)) {
-			Debug.Log ("hideout in front!");
 			if (Input.GetKeyUp (KeyCode.Return)) {
 				if (!this.hidden)
 					Hide ();
