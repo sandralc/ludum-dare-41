@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 8d3a87af594434c24af5da1a9a7ccdb5
-timeCreated: 1524303900
+timeCreated: 1524328022
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -36,6 +36,12 @@ TextureImporter:
     21300058: range
     21300060: empty_slot
     21300062: cookies_chocolate_chip
+    21300064: wall09
+    21300066: wall10
+    21300068: wall11
+    21300070: wall12
+    21300072: door02
+    21300074: floor03
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -173,8 +179,8 @@ TextureImporter:
       name: cream
       rect:
         serializedVersion: 2
-        x: 38
-        y: 95
+        x: 99
+        y: 93
         width: 16
         height: 16
       alignment: 0
@@ -198,11 +204,25 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
+      name: door02
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 109
+        width: 5
+        height: 18
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
       name: egg
       rect:
         serializedVersion: 2
-        x: 99
-        y: 93
+        x: 79
+        y: 86
         width: 16
         height: 16
       alignment: 0
@@ -215,8 +235,8 @@ TextureImporter:
       name: empty_slot
       rect:
         serializedVersion: 2
-        x: 79
-        y: 86
+        x: 38
+        y: 95
         width: 16
         height: 16
       alignment: 0
@@ -257,8 +277,8 @@ TextureImporter:
       name: enemy03
       rect:
         serializedVersion: 2
-        x: 55
-        y: 51
+        x: 1
+        y: 22
         width: 11
         height: 8
       alignment: 0
@@ -296,11 +316,25 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: flour
+      name: floor03
       rect:
         serializedVersion: 2
         x: 74
         y: 68
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: flour
+      rect:
+        serializedVersion: 2
+        x: 92
+        y: 57
         width: 16
         height: 16
       alignment: 0
@@ -341,8 +375,8 @@ TextureImporter:
       name: milk
       rect:
         serializedVersion: 2
-        x: 92
-        y: 57
+        x: 110
+        y: 55
         width: 16
         height: 16
       alignment: 0
@@ -356,7 +390,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 1
-        y: 58
+        y: 34
         width: 11
         height: 7
       alignment: 0
@@ -370,7 +404,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 14
-        y: 58
+        y: 23
         width: 11
         height: 7
       alignment: 0
@@ -383,8 +417,8 @@ TextureImporter:
       name: player03
       rect:
         serializedVersion: 2
-        x: 27
-        y: 50
+        x: 14
+        y: 34
         width: 11
         height: 7
       alignment: 0
@@ -397,7 +431,7 @@ TextureImporter:
       name: player04
       rect:
         serializedVersion: 2
-        x: 40
+        x: 1
         y: 50
         width: 11
         height: 7
@@ -425,8 +459,8 @@ TextureImporter:
       name: recipe01
       rect:
         serializedVersion: 2
-        x: 110
-        y: 55
+        x: 1
+        y: 85
         width: 16
         height: 16
       alignment: 0
@@ -439,7 +473,7 @@ TextureImporter:
       name: strawberry
       rect:
         serializedVersion: 2
-        x: 1
+        x: 19
         y: 85
         width: 16
         height: 16
@@ -453,20 +487,6 @@ TextureImporter:
       name: sugar
       rect:
         serializedVersion: 2
-        x: 19
-        y: 85
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: wall01
-      rect:
-        serializedVersion: 2
         x: 37
         y: 77
         width: 16
@@ -478,7 +498,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: wall02
+      name: wall01
       rect:
         serializedVersion: 2
         x: 55
@@ -492,7 +512,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: wall03
+      name: wall02
       rect:
         serializedVersion: 2
         x: 73
@@ -506,7 +526,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: wall04
+      name: wall03
       rect:
         serializedVersion: 2
         x: 91
@@ -520,7 +540,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: wall05
+      name: wall04
       rect:
         serializedVersion: 2
         x: 109
@@ -534,7 +554,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: wall06
+      name: wall05
       rect:
         serializedVersion: 2
         x: 1
@@ -548,7 +568,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: wall07
+      name: wall06
       rect:
         serializedVersion: 2
         x: 19
@@ -562,11 +582,81 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: wall08
+      name: wall07
       rect:
         serializedVersion: 2
         x: 37
         y: 59
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: wall08
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 43
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: wall09
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: wall10
+      rect:
+        serializedVersion: 2
+        x: 91
+        y: 21
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: wall11
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 19
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: wall12
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 1
         width: 16
         height: 16
       alignment: 0

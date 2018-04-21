@@ -9,6 +9,7 @@ public class GameManager : MonoBehaviour {
 	public Dictionary<Ingredient.Type, int> collectedIngredients;
 
 	[HideInInspector]public Player player;
+	[HideInInspector]public int score = 0;
 
 	void Awake () {
 		if (instance == null)

@@ -30,8 +30,8 @@ public class Player : MonoBehaviour {
 	void Update() {
 		WalkAnimation ();
 		//Movement!
-		Vector2 move = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
-		moveVelocity = move.normalized * speed;
+//		Vector2 move = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
+//		moveVelocity = move.normalized * speed;
 
 //		float distance = move.magnitude;
 //		Vector2 finalPosition = rb2D.position + moveVelocity * Time.fixedDeltaTime;
@@ -59,8 +59,12 @@ public class Player : MonoBehaviour {
 	}
 	
 	void FixedUpdate() {
-		if (!hidden)
-			rb2D.MovePosition (rb2D.position + moveVelocity * Time.fixedDeltaTime);
+		if (!hidden) {
+			transform.Translate(Vector3.right * Input.GetAxis("Horizontal") * Time.deltaTime * speed, Space.World);
+			transform.Translate(Vector3.up * Input.GetAxis("Vertical") * Time.deltaTime * speed, Space.World);
+		}
+//		if (!hidden)
+//			rb2D.MovePosition (rb2D.position + moveVelocity * Time.fixedDeltaTime);
 	}
 
 	void FaceTowardsMovingDirection(Vector2 finalPosition) {
@@ -76,6 +80,9 @@ public class Player : MonoBehaviour {
 	private void OnTriggerEnter2D (Collider2D other) {
 		if (other.tag == "Ingredient") {
 			other.gameObject.GetComponent<Ingredient> ().Collect ();
+			HUDManager.instance.UpdateIngredients ();
+		} else if (other.name == "RoomTrigger") {
+			RoomManager.instance.GoToRoom (int.Parse(other.tag.Split(" "[0])[1]));
 		}
 	}
 
