@@ -16,6 +16,7 @@ public class Player : MonoBehaviour {
 	private Animator animator;
 
 	public bool hidden = false;
+	public bool cooking = false;
 
 	// Use this for initialization
 	void Start () {
@@ -28,8 +29,9 @@ public class Player : MonoBehaviour {
 	}
 
 	void Update() {
-		WalkAnimation ();
-		//Movement!
+		if (!cooking) {
+			WalkAnimation ();
+			//Movement!
 //		Vector2 move = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
 //		moveVelocity = move.normalized * speed;
 
@@ -37,15 +39,27 @@ public class Player : MonoBehaviour {
 //		Vector2 finalPosition = rb2D.position + moveVelocity * Time.fixedDeltaTime;
 //		FaceTowardsMovingDirection (finalPosition);
 
-		//Raycasting objects in vicinity!
-		RaycastHit2D hitInfo = Physics2D.Raycast (transform.position, transform.up, actionRange);
+			//Raycasting objects in vicinity!
+			RaycastHit2D hitInfo = Physics2D.Raycast (transform.position, transform.up, actionRange);
 
-		if (IsHideoutInFrontOfPlayer (hitInfo)) {
-			if (Input.GetKeyUp (KeyCode.Return)) {
-				if (!this.hidden)
-					Hide ();
-				else
-					Unhide ();
+			if (IsHideoutInFrontOfPlayer (hitInfo)) {
+				if (Input.GetKeyUp (KeyCode.Return)) {
+					if (!this.hidden)
+						Hide ();
+					else
+						Unhide ();
+				}
+			}
+			if (IsKitchenInFrontOfPlayer (hitInfo)) {
+				if (Input.GetKeyUp (KeyCode.Return)) {
+					HUDManager.instance.LaunchCooking ();
+					cooking = true;
+				}
+			}
+		} else {
+			if (Input.GetKeyDown (KeyCode.Escape)) {
+				HUDManager.instance.CancelCooking ();
+				cooking = false;
 			}
 		}
 	}
@@ -59,7 +73,7 @@ public class Player : MonoBehaviour {
 	}
 	
 	void FixedUpdate() {
-		if (!hidden) {
+		if (!hidden && !cooking) {
 			transform.Translate(Vector3.right * Input.GetAxis("Horizontal") * Time.deltaTime * speed, Space.World);
 			transform.Translate(Vector3.up * Input.GetAxis("Vertical") * Time.deltaTime * speed, Space.World);
 		}
@@ -77,12 +91,16 @@ public class Player : MonoBehaviour {
 		return hit.transform != null && hit.collider.tag == "Hideout";
 	}
 
+	bool IsKitchenInFrontOfPlayer(RaycastHit2D hit) {
+		return hit.transform != null && hit.collider.tag == "Kitchen";
+	}
+
 	private void OnTriggerEnter2D (Collider2D other) {
 		if (other.tag == "Ingredient") {
 			other.gameObject.GetComponent<Ingredient> ().Collect ();
 			HUDManager.instance.UpdateIngredients ();
 		} else if (other.name == "RoomTrigger") {
-			RoomManager.instance.GoToRoom (int.Parse(other.tag.Split(" "[0])[1]));
+			RoomManager.instance.GoToRoom (int.Parse (other.tag.Split (" " [0]) [1]));
 		}
 	}
 

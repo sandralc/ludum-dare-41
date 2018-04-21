@@ -10,6 +10,16 @@ public class HUDManager : MonoBehaviour {
 	private Text score;
 	private Image[] recipeSlots;
 	private Dictionary<Ingredient.Type, Text> ingredientSlots;
+	//Cooking panel specific
+	private GameObject cookingPanel;
+	private Dictionary<Ingredient.Type, Button> ingredientCookingButtons;
+	private Dictionary<Ingredient.Type, Text> ingredientCookingButtonsText;
+	private Text recipeText;
+	private Button cookButton;
+
+	private Dictionary<Ingredient.Type, int> recipe;
+	private Dictionary<Recipe.Type, string> validRecipes;
+	private List<Recipe.Type> cookedRecipes;
 
 	// Use this for initialization
 	void Awake () {
@@ -18,8 +28,6 @@ public class HUDManager : MonoBehaviour {
 		else if (instance != this)
 			Destroy (gameObject);
 		DontDestroyOnLoad (gameObject);
-
-		InitHUD ();
 	}
 
 	void InitHUD() {
@@ -42,14 +50,58 @@ public class HUDManager : MonoBehaviour {
 		ingredientSlots.Add(Ingredient.Type.Strawberry, hud.transform.Find ("Ingredients/Row2/Strawberry").GetComponentInChildren<Text>());
 		ingredientSlots.Add(Ingredient.Type.Chocolate, hud.transform.Find ("Ingredients/Row2/Chocolate").GetComponentInChildren<Text>());
 		ingredientSlots.Add(Ingredient.Type.Cream, hud.transform.Find ("Ingredients/Row2/Cream").GetComponentInChildren<Text>());
+
+		cookingPanel = hud.transform.Find ("Cooking Panel").gameObject;
+
+		ingredientCookingButtons = new Dictionary<Ingredient.Type, Button> ();
+		ingredientCookingButtonsText = new Dictionary<Ingredient.Type, Text> ();
+
+		ingredientCookingButtons.Add(Ingredient.Type.Butter, cookingPanel.transform.Find ("Ingredients/Row/Butter").GetComponentInChildren<Button>());
+		ingredientCookingButtonsText.Add(Ingredient.Type.Butter, cookingPanel.transform.Find ("Ingredients/Row/Butter").GetComponentInChildren<Text>());
+		ingredientCookingButtons.Add(Ingredient.Type.Sugar, cookingPanel.transform.Find ("Ingredients/Row/Sugar").GetComponentInChildren<Button>());
+		ingredientCookingButtonsText.Add(Ingredient.Type.Sugar, cookingPanel.transform.Find ("Ingredients/Row/Sugar").GetComponentInChildren<Text>());
+		ingredientCookingButtons.Add(Ingredient.Type.Flour, cookingPanel.transform.Find ("Ingredients/Row/Flour").GetComponentInChildren<Button>());
+		ingredientCookingButtonsText.Add(Ingredient.Type.Flour, cookingPanel.transform.Find ("Ingredients/Row/Flour").GetComponentInChildren<Text>());
+		ingredientCookingButtons.Add(Ingredient.Type.Egg, cookingPanel.transform.Find ("Ingredients/Row/Egg").GetComponentInChildren<Button>());
+		ingredientCookingButtonsText.Add(Ingredient.Type.Egg, cookingPanel.transform.Find ("Ingredients/Row/Egg").GetComponentInChildren<Text>());
+		ingredientCookingButtons.Add(Ingredient.Type.Milk, cookingPanel.transform.Find ("Ingredients/Row2/Milk").GetComponentInChildren<Button>());
+		ingredientCookingButtonsText.Add(Ingredient.Type.Milk, cookingPanel.transform.Find ("Ingredients/Row2/Milk").GetComponentInChildren<Text>());
+		ingredientCookingButtons.Add(Ingredient.Type.Strawberry, cookingPanel.transform.Find ("Ingredients/Row2/Strawberry").GetComponentInChildren<Button>());
+		ingredientCookingButtonsText.Add(Ingredient.Type.Strawberry, cookingPanel.transform.Find ("Ingredients/Row2/Strawberry").GetComponentInChildren<Text>());
+		ingredientCookingButtons.Add(Ingredient.Type.Chocolate, cookingPanel.transform.Find ("Ingredients/Row2/Chocolate").GetComponentInChildren<Button>());
+		ingredientCookingButtonsText.Add(Ingredient.Type.Chocolate, cookingPanel.transform.Find ("Ingredients/Row2/Chocolate").GetComponentInChildren<Text>());
+		ingredientCookingButtons.Add(Ingredient.Type.Cream, cookingPanel.transform.Find ("Ingredients/Row2/Cream").GetComponentInChildren<Button>());
+		ingredientCookingButtonsText.Add(Ingredient.Type.Cream, cookingPanel.transform.Find ("Ingredients/Row2/Cream").GetComponentInChildren<Text>());
+
+		recipeText = cookingPanel.transform.Find ("Recipe/Recipe").GetComponent<Text> ();
+		cookButton = cookingPanel.transform.Find ("Cook/Cook Button").GetComponent<Button> ();
+
+		cookedRecipes = new List<Recipe.Type> ();
+		recipe = new Dictionary<Ingredient.Type, int> ();
+
+		cookButton.onClick.AddListener (() => {
+			Recipe.Type validRecipe = EvaluateRecipe();
+			if (validRecipe != Recipe.Type.None) {
+				if (cookedRecipes.Count <4) {
+					cookedRecipes.Add(validRecipe);
+				}
+			}
+		});
+
+		InitIngredientCookingButtons ();
+		UpdateIngredientCookingButtonsText ();
 	}
 
 	void Start() {
+		InitHUD ();
+		cookingPanel.SetActive (false);
+		InitValidRecipes ();
+
 		UpdateScore ();
 		UpdateIngredients ();
 	}
 
-	void UpdateScore() {
+	public void UpdateScore() {
 		score.text = "Score: " + GameManager.instance.score;
 	}
 
@@ -58,6 +110,90 @@ public class HUDManager : MonoBehaviour {
 		foreach (KeyValuePair<Ingredient.Type, int> collectedIngredient in collectedIngredients) {
 			ingredientSlots [collectedIngredient.Key].text = "x " + collectedIngredient.Value;
 		}
+	}
+
+	public void LaunchCooking() {
+		cookingPanel.SetActive (true);
+		ClearRecipe ();
+		UpdateIngredientCookingButtonsText ();
+	}
+
+	public void CancelCooking() {
+		ClearRecipe ();
+		cookingPanel.SetActive (false);
+	}
+
+	void InitIngredientCookingButtons() {
+		foreach(KeyValuePair<Ingredient.Type, Button> button in ingredientCookingButtons) {
+			button.Value.onClick.AddListener (() => {
+				AddIngredientToRecipe(button.Key);
+			});
+		}
+	}
+
+	void UpdateIngredientCookingButtonsText() {
+		Debug.Log ("Updating all the ingredieents");
+		foreach (KeyValuePair<Ingredient.Type, Text> ingredientText in ingredientCookingButtonsText) {
+			ingredientCookingButtonsText [ingredientText.Key].text = "x" + GameManager.instance.collectedIngredients [ingredientText.Key];
+		}
+	}
+
+	void AddIngredientToRecipe(Ingredient.Type ingredient) {
+		if (!recipe.ContainsKey (ingredient) && GameManager.instance.collectedIngredients[ingredient]>0) {
+			recipe.Add (ingredient, 1);
+			if (recipeText.text != "") {
+				recipeText.text += ", ";
+			}
+			recipeText.text += ingredient.ToString().ToLower();
+			ingredientCookingButtonsText [ingredient].text = "x" + (GameManager.instance.collectedIngredients [ingredient] - 1);
+		}
+	}
+
+	void ClearRecipe () {
+		if (recipe != null)
+			recipe.Clear ();
+		recipeText.text = "";
+	}
+
+	Recipe.Type EvaluateRecipe() {
+		string recipeInTextFormat = RecipeToText ();
+		foreach (KeyValuePair<Recipe.Type, string> validRecipe in validRecipes) {
+			if (recipeInTextFormat.Equals (validRecipe.Value)) {
+				return validRecipe.Key;
+			}
+		}
+		return Recipe.Type.None;
+	}
+
+	string RecipeToText() {
+		List<string> recipeInListFormat = new List<string> ();
+		foreach (KeyValuePair<Ingredient.Type, int> recipeItem in recipe) {
+			recipeInListFormat.Add (recipeItem.Key.ToString () + "," + recipeItem.Value);
+		}
+		recipeInListFormat.Sort ();
+
+		string recipeInTextFormat = "";
+		for (int i = 0; i < recipeInListFormat.Count; i++) {
+			if (i != 0)
+				recipeInTextFormat += ";";
+			recipeInTextFormat += recipeInListFormat [i];
+		}
+		return recipeInTextFormat;
+	}
+
+	void InitValidRecipes() {
+		validRecipes = new Dictionary<Recipe.Type, string> ();
+
+		validRecipes.Add (Recipe.Type.ChocolateCake, "Chocolate,Egg,Flour,Sugar");
+		validRecipes.Add (Recipe.Type.ChocolateCookies, "Butter,Chocolate,Flour,Sugar");
+		validRecipes.Add (Recipe.Type.ChocolateShot, "Chocolate,Cream,Milk");
+		validRecipes.Add (Recipe.Type.Crepes, "Butter,Cream,Egg,Flour,Sugar");
+		validRecipes.Add (Recipe.Type.Croissant, "Butter,Egg,Flour,Sugar");
+		validRecipes.Add (Recipe.Type.Flan, "Egg,Milk,Sugar");
+		validRecipes.Add (Recipe.Type.StrawberryTart, "Butter,Flour,Milk,Strawberry,Sugar");
+		validRecipes.Add (Recipe.Type.Sponge, "Egg,Flour,Sugar");
+		validRecipes.Add (Recipe.Type.SugarCookies, "Butter,Egg,Flour,Milk,Sugar");
+		validRecipes.Add (Recipe.Type.Waffles, "Butter,Cream,Egg,Flour,Strawberry,Sugar");
 	}
 
 }

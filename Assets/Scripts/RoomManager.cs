@@ -5,7 +5,6 @@ using UnityEngine;
 public class RoomManager : MonoBehaviour {
 
 	public static RoomManager instance = null;
-
 	public GameObject[] rooms;
 
 	private int room = 0;

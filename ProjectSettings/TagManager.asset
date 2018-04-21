@@ -12,6 +12,7 @@ TagManager:
   - Recipe
   - Room 2
   - Room 1
+  - Room 0
   layers:
   - Default
   - TransparentFX
