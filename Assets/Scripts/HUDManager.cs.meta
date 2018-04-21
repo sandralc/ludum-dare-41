@@ -1,11 +1,21 @@
 fileFormatVersion: 2
 guid: 00f033a4835aa48da90488a01804d4a3
-timeCreated: 1524323625
+timeCreated: 1524348773
 licenseType: Free
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - chocolateCake: {fileID: 21300082, guid: 8d3a87af594434c24af5da1a9a7ccdb5, type: 3}
+  - chocolateCookie: {fileID: 21300062, guid: 8d3a87af594434c24af5da1a9a7ccdb5, type: 3}
+  - chocolateShot: {fileID: 21300084, guid: 8d3a87af594434c24af5da1a9a7ccdb5, type: 3}
+  - crepes: {fileID: 21300086, guid: 8d3a87af594434c24af5da1a9a7ccdb5, type: 3}
+  - croissant: {fileID: 21300088, guid: 8d3a87af594434c24af5da1a9a7ccdb5, type: 3}
+  - flan: {fileID: 21300090, guid: 8d3a87af594434c24af5da1a9a7ccdb5, type: 3}
+  - strawberryTart: {fileID: 21300094, guid: 8d3a87af594434c24af5da1a9a7ccdb5, type: 3}
+  - sponge: {fileID: 21300092, guid: 8d3a87af594434c24af5da1a9a7ccdb5, type: 3}
+  - sugarCookies: {fileID: 21300096, guid: 8d3a87af594434c24af5da1a9a7ccdb5, type: 3}
+  - waffles: {fileID: 21300098, guid: 8d3a87af594434c24af5da1a9a7ccdb5, type: 3}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

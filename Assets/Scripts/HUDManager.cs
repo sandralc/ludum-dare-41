@@ -6,6 +6,16 @@ using UnityEngine.UI;
 public class HUDManager : MonoBehaviour {
 
 	public static HUDManager instance = null;
+	public Sprite chocolateCake;
+	public Sprite chocolateCookie;
+	public Sprite chocolateShot;
+	public Sprite crepes;
+	public Sprite croissant;
+	public Sprite flan;
+	public Sprite strawberryTart;
+	public Sprite sponge;
+	public Sprite sugarCookies;
+	public Sprite waffles;
 
 	private Text score;
 	private Image[] recipeSlots;
@@ -82,8 +92,12 @@ public class HUDManager : MonoBehaviour {
 		cookButton.onClick.AddListener (() => {
 			Recipe.Type validRecipe = EvaluateRecipe();
 			if (validRecipe != Recipe.Type.None) {
-				if (cookedRecipes.Count <4) {
+				if (cookedRecipes.Count < 4) {
 					cookedRecipes.Add(validRecipe);
+					SubstractUsedIngredients();
+					Debug.Log("Successfully cooked a new recipe! " + validRecipe.ToString());
+					UpdateCookedRecipes();
+					LaunchCooking();
 				}
 			}
 		});
@@ -99,6 +113,7 @@ public class HUDManager : MonoBehaviour {
 
 		UpdateScore ();
 		UpdateIngredients ();
+		UpdateCookedRecipes ();
 	}
 
 	public void UpdateScore() {
@@ -109,6 +124,25 @@ public class HUDManager : MonoBehaviour {
 		Dictionary<Ingredient.Type, int> collectedIngredients = GameManager.instance.collectedIngredients;
 		foreach (KeyValuePair<Ingredient.Type, int> collectedIngredient in collectedIngredients) {
 			ingredientSlots [collectedIngredient.Key].text = "x " + collectedIngredient.Value;
+		}
+	}
+
+	public void UpdateCookedRecipes() {
+		int index = 0;
+		foreach (Recipe.Type cookedRecipe in cookedRecipes) {
+			Image recipePiec = recipeSlots [index].GetComponentInChildren<Image> ();
+			recipePiec.gameObject.SetActive (true);
+			recipePiec.sprite = GetSpriteForRecipeType(cookedRecipe);
+			index++;
+		}
+		for (int i = index; i < recipeSlots.Length; i++) {
+			recipeSlots [i].GetComponentInChildren<Image> ().gameObject.SetActive (false);
+		}
+	}
+
+	public void SubstractUsedIngredients() {
+		foreach (KeyValuePair<Ingredient.Type, int> ingredientSpent in recipe) {
+			GameManager.instance.collectedIngredients [ingredientSpent.Key]--;
 		}
 	}
 
@@ -168,14 +202,14 @@ public class HUDManager : MonoBehaviour {
 	string RecipeToText() {
 		List<string> recipeInListFormat = new List<string> ();
 		foreach (KeyValuePair<Ingredient.Type, int> recipeItem in recipe) {
-			recipeInListFormat.Add (recipeItem.Key.ToString () + "," + recipeItem.Value);
+			recipeInListFormat.Add (recipeItem.Key.ToString ());
 		}
 		recipeInListFormat.Sort ();
 
 		string recipeInTextFormat = "";
 		for (int i = 0; i < recipeInListFormat.Count; i++) {
 			if (i != 0)
-				recipeInTextFormat += ";";
+				recipeInTextFormat += ",";
 			recipeInTextFormat += recipeInListFormat [i];
 		}
 		return recipeInTextFormat;
@@ -194,6 +228,31 @@ public class HUDManager : MonoBehaviour {
 		validRecipes.Add (Recipe.Type.Sponge, "Egg,Flour,Sugar");
 		validRecipes.Add (Recipe.Type.SugarCookies, "Butter,Egg,Flour,Milk,Sugar");
 		validRecipes.Add (Recipe.Type.Waffles, "Butter,Cream,Egg,Flour,Strawberry,Sugar");
+	}
+
+	Sprite GetSpriteForRecipeType (Recipe.Type recipeType) {
+		if (recipeType.Equals (Recipe.Type.ChocolateCake)) {
+			return chocolateCake;
+		} else if (recipeType.Equals (Recipe.Type.ChocolateCookies)) {
+			return chocolateCookie;
+		} else if (recipeType.Equals (Recipe.Type.ChocolateShot)) {
+			return chocolateShot;
+		} else if (recipeType.Equals (Recipe.Type.Crepes)) {
+			return crepes;
+		} else if (recipeType.Equals (Recipe.Type.Croissant)) {
+			return croissant;
+		} else if (recipeType.Equals (Recipe.Type.Flan)) {
+			return flan;
+		} else if (recipeType.Equals (Recipe.Type.Sponge)) {
+			return sponge;
+		} else if (recipeType.Equals (Recipe.Type.StrawberryTart)) {
+			return strawberryTart;
+		} else if (recipeType.Equals (Recipe.Type.SugarCookies)) {
+			return sugarCookies;
+		} else if (recipeType.Equals (Recipe.Type.Waffles)) {
+			return waffles;
+		}
+		return chocolateCake;
 	}
 
 }
