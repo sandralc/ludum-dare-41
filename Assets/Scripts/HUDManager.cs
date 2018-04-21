@@ -255,4 +255,11 @@ public class HUDManager : MonoBehaviour {
 		return chocolateCake;
 	}
 
+	public Recipe.Type GetCookedRecipeOnSlotIndex(int index) {
+		if (cookedRecipes.Count > 0)
+			return cookedRecipes [index];
+		else
+			return Recipe.Type.None;
+	}
+
 }

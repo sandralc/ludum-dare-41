@@ -123,6 +123,22 @@ MonoBehaviour:
     m_Bits: 256
   actionRange: 0.5
   hidden: 0
+  cooking: 0
+  chocolateCake: {fileID: 1137697476260042, guid: cc08edfb9e46c4414902dbb0d3fa09b3,
+    type: 2}
+  chocolateCookie: {fileID: 1739008176116956, guid: fec64de829ce44653aa3461c170cec44,
+    type: 2}
+  chocolateShot: {fileID: 1832242005453866, guid: 0607ed2281c794126a8f1d57e9a81e70,
+    type: 2}
+  crepes: {fileID: 1702394764155488, guid: 2c623471df67e4717bc549cb5eee8529, type: 2}
+  croissant: {fileID: 1491847648998650, guid: e287db40aa9e3480e9d4fd682284db86, type: 2}
+  flan: {fileID: 1273521908549794, guid: 4386bd5fb8db8479eaed95c13e4113ce, type: 2}
+  strawberryTart: {fileID: 1814405060491728, guid: 5ac6b084d35e147838ce8a6a1ad2f3ef,
+    type: 2}
+  sponge: {fileID: 1286193690535588, guid: 1b9c08719bee54a5ca5902a1c66f2ab6, type: 2}
+  sugarCookies: {fileID: 1459548191529554, guid: f8bbbf8e73b0644bfbb8b46f32839a3d,
+    type: 2}
+  waffles: {fileID: 1363075945800130, guid: de39f25349534492a9ac06e04f17a6ba, type: 2}
 --- !u!212 &212407005446837852
 SpriteRenderer:
   m_ObjectHideFlags: 1

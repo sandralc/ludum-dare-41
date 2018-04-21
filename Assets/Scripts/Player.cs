@@ -15,8 +15,19 @@ public class Player : MonoBehaviour {
 	private SpriteRenderer renderer;
 	private Animator animator;
 
-	public bool hidden = false;
-	public bool cooking = false;
+	[HideInInspector]public bool hidden = false;
+	[HideInInspector]public bool cooking = false;
+
+	public GameObject chocolateCake;
+	public GameObject chocolateCookie;
+	public GameObject chocolateShot;
+	public GameObject crepes;
+	public GameObject croissant;
+	public GameObject flan;
+	public GameObject strawberryTart;
+	public GameObject sponge;
+	public GameObject sugarCookies;
+	public GameObject waffles;
 
 	// Use this for initialization
 	void Start () {
@@ -56,6 +67,7 @@ public class Player : MonoBehaviour {
 					cooking = true;
 				}
 			}
+			ThrowBait ();
 		} else {
 			if (Input.GetKeyDown (KeyCode.Escape)) {
 				HUDManager.instance.CancelCooking ();
@@ -112,6 +124,43 @@ public class Player : MonoBehaviour {
 	void Unhide() {
 		renderer.enabled = true;
 		this.hidden = false;
+	}
+
+	void ThrowBait() {
+		if (Input.GetKeyDown (KeyCode.Alpha1) || Input.GetKeyDown (KeyCode.Keypad1)) {
+			DropRecipe (0);
+		} else if (Input.GetKeyDown (KeyCode.Alpha2) || Input.GetKeyDown (KeyCode.Keypad2)) {
+			DropRecipe (1);
+		} else if (Input.GetKeyDown (KeyCode.Alpha3) || Input.GetKeyDown (KeyCode.Keypad3)) {
+			DropRecipe (2);
+		} else if (Input.GetKeyDown (KeyCode.Alpha4) || Input.GetKeyDown (KeyCode.Keypad4)) {
+			DropRecipe (3);
+		}
+	}
+
+	void DropRecipe(int index) {
+		Recipe.Type recipe = HUDManager.instance.GetCookedRecipeOnSlotIndex (index);
+		if (recipe != null) {
+			if (recipe.Equals (Recipe.Type.Sponge)) {
+				Instantiate (sponge, transform.position, Quaternion.identity);
+			} else if (recipe.Equals (Recipe.Type.ChocolateCake)) {
+				Instantiate (chocolateCake, transform.position, Quaternion.identity);
+			} else if (recipe.Equals (Recipe.Type.ChocolateCookies)) {
+				Instantiate (chocolateCookie, transform.position, Quaternion.identity);
+			} else if (recipe.Equals (Recipe.Type.Crepes)) {
+				Instantiate (crepes, transform.position, Quaternion.identity);
+			} else if (recipe.Equals (Recipe.Type.Croissant)) {
+				Instantiate (croissant, transform.position, Quaternion.identity);
+			} else if (recipe.Equals (Recipe.Type.Flan)) {
+				Instantiate (flan, transform.position, Quaternion.identity);
+			} else if (recipe.Equals (Recipe.Type.StrawberryTart)) {
+				Instantiate (strawberryTart, transform.position, Quaternion.identity);
+			} else if (recipe.Equals (Recipe.Type.SugarCookies)) {
+				Instantiate (sugarCookies, transform.position, Quaternion.identity);
+			} else if (recipe.Equals (Recipe.Type.Waffles)) {
+				Instantiate (waffles, transform.position, Quaternion.identity);
+			}
+		}
 	}
 
 }
