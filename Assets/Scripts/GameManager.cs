@@ -44,7 +44,7 @@ public class GameManager : MonoBehaviour {
 
 	public void GameOver() {
 		
-		int backwardsRoom = RoomManager.instance.GetCurrentRoom() + 1;
+		int backwardsRoom = RoomManager.instance.GetCurrentRoom() - 2;
 		if (backwardsRoom < 0)
 			backwardsRoom = 0;
 		RoomManager.room = backwardsRoom;

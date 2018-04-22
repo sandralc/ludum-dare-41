@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 public class RoomManager : MonoBehaviour {
 
 	public static RoomManager instance = null;
-	public static int room = 0;
+	public static int room = 1;
 
 	public GameObject[] rooms;
 	private TilemapCollider2D[] roomDoorsTilemap;
