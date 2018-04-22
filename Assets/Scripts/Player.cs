@@ -29,6 +29,13 @@ public class Player : MonoBehaviour {
 	public GameObject sugarCookies;
 	public GameObject waffles;
 
+	public AudioClip pickUpSound;
+	public AudioClip pickUpSound2;
+	public AudioClip hideSound;
+	public AudioClip kitchenSound;
+	public AudioClip placeObjectSound1;
+	public AudioClip placeObjectSound2;
+
 	// Use this for initialization
 	void Start () {
 		boxCollider = GetComponent<BoxCollider2D> ();
@@ -64,6 +71,7 @@ public class Player : MonoBehaviour {
 			if (IsKitchenInFrontOfPlayer (hitInfo)) {
 				if (Input.GetKeyUp (KeyCode.Return)) {
 					HUDManager.instance.LaunchCooking ();
+					SoundManager.instance.PlaySingle (kitchenSound);
 					cooking = true;
 				}
 			}
@@ -110,6 +118,7 @@ public class Player : MonoBehaviour {
 	private void OnTriggerEnter2D (Collider2D other) {
 		if (other.tag == "Ingredient") {
 			other.gameObject.GetComponent<Ingredient> ().Collect ();
+			SoundManager.instance.RandomizeSfx (pickUpSound, pickUpSound2);
 			HUDManager.instance.UpdateIngredients ();
 		} else if (other.name == "RoomTrigger") {
 			RoomManager.instance.GoToRoom (int.Parse (other.tag.Split (" " [0]) [1]));
@@ -119,11 +128,13 @@ public class Player : MonoBehaviour {
 	void Hide() {
 		renderer.enabled = false;
 		this.hidden = true;
+		SoundManager.instance.PlaySingle (hideSound);
 	}
 
 	void Unhide() {
 		renderer.enabled = true;
 		this.hidden = false;
+		SoundManager.instance.PlaySingle (hideSound);
 	}
 
 	void ThrowBait() {
@@ -160,6 +171,7 @@ public class Player : MonoBehaviour {
 			} else if (recipe.Equals (Recipe.Type.Waffles)) {
 				Instantiate (waffles, transform.position, Quaternion.identity);
 			}
+			SoundManager.instance.RandomizeSfx (placeObjectSound1, placeObjectSound2);
 		}
 	}
 

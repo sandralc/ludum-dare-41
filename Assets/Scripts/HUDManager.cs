@@ -17,6 +17,8 @@ public class HUDManager : MonoBehaviour {
 	public Sprite sugarCookies;
 	public Sprite waffles;
 
+	public AudioClip selectSound;
+
 	private Text score;
 	private Image[] recipeSlots;
 	private Dictionary<Ingredient.Type, Text> ingredientSlots;

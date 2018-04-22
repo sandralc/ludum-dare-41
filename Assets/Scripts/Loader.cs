@@ -7,7 +7,7 @@ public class Loader : MonoBehaviour {
 	public GameObject gameManager;
 	public GameObject hudManager;
 	public GameObject roomManager;
-//	public GameObject soundManager; TODO
+	public GameObject soundManager;
 	public Player player;
 
 	// Use this for initialization

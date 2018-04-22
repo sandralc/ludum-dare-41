@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Enemy : MonoBehaviour {
 
+	public enum State {Patrol, Eat, Follow};
+
 	public float speed = 10f;
 	public float rotationSpeed = 10f;
 	public float detectionRange = 10;
@@ -12,10 +14,34 @@ public class Enemy : MonoBehaviour {
 	public LineRenderer lineOfSight;
 	public Gradient redColor;
 	public Gradient greenColor;
+	public Gradient juicyColor;
 
 	public Transform[] moveSpots;
 	private int actualSpot = 0;
 	private float waitTime;
+
+	public Recipe.Type[] favouriteDessert;
+	public float affectedSpeed;
+	public float affectedEyesight;
+	public float startEatTime;
+	private float eatTime;
+
+	private float overallSpeed;
+	private float overallDetectionRange;
+
+	private State state = Enemy.State.Patrol;
+	private GameObject food;
+	private Vector2 foodPosition;
+
+	public GameObject foodExclamation;
+	public GameObject playerExclamation;
+	public GameObject forkAndSpoon;
+
+	public AudioClip eatSound;
+	public AudioClip detectedSound;
+
+//	public float startAngleOscillation;
+//	private float angleOscillation;
 
 	private BoxCollider2D boxCollider;
 	private Rigidbody2D rb2D;
@@ -31,35 +57,60 @@ public class Enemy : MonoBehaviour {
 		animator = GetComponent<Animator> ();
 		target = GameObject.FindGameObjectWithTag ("Player").transform;
 		waitTime = startWaitTime;
+		eatTime = startEatTime;
+
+		overallSpeed = speed;
+		overallDetectionRange = detectionRange;
+//		angleOscillation = startAngleOscillation;
 
 		Physics2D.queriesStartInColliders = false;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-		
-		RaycastHit2D hitInfo = Physics2D.Raycast (transform.position, transform.up, detectionRange);
-		if (hitInfo.collider != null) {
-			Debug.DrawLine (transform.position, hitInfo.point, Color.red);
-			lineOfSight.SetPosition (1, hitInfo.point);
-			lineOfSight.colorGradient = greenColor;
-			if (hitInfo.collider.CompareTag ("Player") && !GameManager.instance.player.hidden) {
-				Debug.Log ("Detected!");
-				lineOfSight.colorGradient = redColor;
-			}
-		} else {
-			Debug.DrawLine (transform.position, transform.position + transform.up * detectionRange);
-			lineOfSight.SetPosition (1, transform.position + transform.up * detectionRange);
-			lineOfSight.colorGradient = greenColor;
-		}
-			
-		lineOfSight.SetPosition (0, transform.position);
 
-		Patrol();
+		if (state.Equals (State.Patrol)) {
+			RaycastHit2D hitInfo = Physics2D.Raycast (transform.position, transform.up, overallDetectionRange);
+			if (hitInfo.collider != null) {
+				Debug.DrawLine (transform.position, hitInfo.point, Color.red);
+				lineOfSight.SetPosition (1, hitInfo.point);
+				lineOfSight.colorGradient = greenColor;
+				if (hitInfo.collider.CompareTag ("Player") && !GameManager.instance.player.hidden) {
+					SoundManager.instance.PlaySingle (detectedSound);
+					lineOfSight.colorGradient = redColor;
+				}
+				if (hitInfo.collider.CompareTag ("Recipe")) {
+					if (favouriteDessert.Length == 0) {
+						lineOfSight.colorGradient = juicyColor;
+						state = State.Eat;
+						food = hitInfo.transform.gameObject;
+						foodPosition = hitInfo.point;
+					} else {
+						bool favouriteDessert = IsFavouriteDessert (hitInfo.collider.name);
+						if (favouriteDessert || (!favouriteDessert && Random.value < 0.2)) {
+							lineOfSight.colorGradient = juicyColor;
+							state = State.Eat;
+							food = hitInfo.transform.gameObject;
+							foodPosition = hitInfo.point;
+						}
+					}
+				}
+			} else {
+				Debug.DrawLine (transform.position, transform.position + transform.up * overallDetectionRange);
+				lineOfSight.SetPosition (1, transform.position + transform.up * overallDetectionRange);
+				lineOfSight.colorGradient = greenColor;
+			}
+			
+			lineOfSight.SetPosition (0, transform.position);
+			Patrol ();
+		} else if (state.Equals (Enemy.State.Eat)) {
+			Eat ();
+			SoundManager.instance.PlaySingle (eatSound);
+		}
 	}
 
 	void Patrol() {
-		transform.position = Vector2.MoveTowards (transform.position, moveSpots [actualSpot].position, speed * Time.deltaTime);
+		transform.position = Vector2.MoveTowards (transform.position, moveSpots [actualSpot].position, overallSpeed * Time.deltaTime);
 
 		if (Vector2.Distance (transform.position, moveSpots [actualSpot].position) < 0.2f) {
 			if (waitTime <= 0) {
@@ -73,8 +124,55 @@ public class Enemy : MonoBehaviour {
 			}
 		} else {
 			var dir = moveSpots [actualSpot].position - transform.position;
+//			if (angleOscillation < -startAngleOscillation) {
+//				angleOscillation += 100f * Time.deltaTime;
+//				Debug.Log (angleOscillation);
+//			} else {
+//				angleOscillation -= 100f * Time.deltaTime;
+//				Debug.Log (angleOscillation);
+//			}
 			var angle = Mathf.Atan2 (dir.y, dir.x) * Mathf.Rad2Deg;
 			transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.AngleAxis (angle - 90, Vector3.forward), Time.deltaTime * rotationSpeed);
 		}
+	}
+
+	void Eat() {
+		transform.position = Vector2.MoveTowards (transform.position, foodPosition, overallSpeed * Time.deltaTime);
+
+		if (Vector2.Distance(transform.position, foodPosition) < 0.2f) {
+			if (eatTime <= 0) {
+				eatTime = startEatTime;
+				state = State.Patrol;
+				if (affectedSpeed < 0) {
+					overallSpeed = Mathf.Abs (Mathf.Max (speed + affectedSpeed, speed / 2));
+				} else {
+					overallSpeed = Mathf.Abs (Mathf.Min (speed + affectedSpeed, speed * 2));
+				}
+				if (affectedEyesight < 0) {
+					overallDetectionRange = Mathf.Abs(Mathf.Max(detectionRange + affectedEyesight, detectionRange/2));
+				} else {
+					overallDetectionRange = Mathf.Abs(Mathf.Min(detectionRange + affectedEyesight, detectionRange * 2));
+				}
+				Destroy (food);
+				lineOfSight.enabled = true;
+			} else {
+				eatTime -= Time.deltaTime;
+				if (lineOfSight.enabled)
+					lineOfSight.enabled = false;
+			}
+		} else {
+			var dir = new Vector3(foodPosition.x, foodPosition.y, 0.0f) - transform.position;
+			var angle = Mathf.Atan2 (dir.y, dir.x) * Mathf.Rad2Deg;
+			transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.AngleAxis (angle - 90, Vector3.forward), Time.deltaTime * rotationSpeed);
+		}
+	}
+
+	bool IsFavouriteDessert(string name) {
+		for(int i = 0; i < favouriteDessert.Length;i++) {
+			if (name.Contains (favouriteDessert [i].ToString())) {
+				return true;
+			}
+		}
+		return false;
 	}
 }

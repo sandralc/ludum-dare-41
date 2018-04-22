@@ -54,6 +54,20 @@ TextureImporter:
     21300094: strawberry_tart
     21300096: sugar_cookies
     21300098: waffles
+    21300100: carpet
+    21300102: exclamation_mark
+    21300104: exclamation_mark2
+    21300106: exclamation_mark3
+    21300108: floor04
+    21300110: floor05
+    21300112: floor06
+    21300114: floor07
+    21300116: floor08
+    21300118: floor09
+    21300120: floor10
+    21300122: floor11
+    21300124: floor12
+    21300126: floor13
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -149,8 +163,8 @@ TextureImporter:
       name: butter
       rect:
         serializedVersion: 2
-        x: 38
-        y: 98
+        x: 71
+        y: 223
         width: 16
         height: 16
       alignment: 0
@@ -164,9 +178,23 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 38
-        y: 116
+        y: 244
         width: 32
         height: 11
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: carpet
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 237
+        width: 35
+        height: 18
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -177,8 +205,8 @@ TextureImporter:
       name: chocolate
       rect:
         serializedVersion: 2
-        x: 1
-        y: 85
+        x: 96
+        y: 220
         width: 16
         height: 16
       alignment: 0
@@ -191,8 +219,8 @@ TextureImporter:
       name: chocolate_cake
       rect:
         serializedVersion: 2
-        x: 19
-        y: 85
+        x: 1
+        y: 219
         width: 16
         height: 16
       alignment: 0
@@ -205,8 +233,8 @@ TextureImporter:
       name: chocolate_shot
       rect:
         serializedVersion: 2
-        x: 37
-        y: 80
+        x: 19
+        y: 219
         width: 16
         height: 16
       alignment: 0
@@ -219,8 +247,8 @@ TextureImporter:
       name: cookies_chocolate_chip
       rect:
         serializedVersion: 2
-        x: 1
-        y: 67
+        x: 37
+        y: 219
         width: 16
         height: 16
       alignment: 0
@@ -233,8 +261,8 @@ TextureImporter:
       name: cream
       rect:
         serializedVersion: 2
-        x: 19
-        y: 67
+        x: 68
+        y: 205
         width: 16
         height: 16
       alignment: 0
@@ -247,8 +275,8 @@ TextureImporter:
       name: crepes
       rect:
         serializedVersion: 2
-        x: 95
-        y: 111
+        x: 86
+        y: 202
         width: 16
         height: 16
       alignment: 0
@@ -261,8 +289,8 @@ TextureImporter:
       name: croissant
       rect:
         serializedVersion: 2
-        x: 63
-        y: 95
+        x: 104
+        y: 193
         width: 16
         height: 16
       alignment: 0
@@ -275,8 +303,8 @@ TextureImporter:
       name: door
       rect:
         serializedVersion: 2
-        x: 1
-        y: 1
+        x: 38
+        y: 237
         width: 18
         height: 5
       alignment: 0
@@ -289,8 +317,8 @@ TextureImporter:
       name: door02
       rect:
         serializedVersion: 2
-        x: 56
-        y: 96
+        x: 89
+        y: 221
         width: 5
         height: 18
       alignment: 0
@@ -303,8 +331,8 @@ TextureImporter:
       name: egg
       rect:
         serializedVersion: 2
-        x: 94
-        y: 93
+        x: 1
+        y: 201
         width: 16
         height: 16
       alignment: 0
@@ -317,8 +345,8 @@ TextureImporter:
       name: empty_slot
       rect:
         serializedVersion: 2
-        x: 55
-        y: 77
+        x: 19
+        y: 201
         width: 16
         height: 16
       alignment: 0
@@ -331,8 +359,8 @@ TextureImporter:
       name: enemy01
       rect:
         serializedVersion: 2
-        x: 113
-        y: 119
+        x: 58
+        y: 234
         width: 11
         height: 8
       alignment: 0
@@ -345,8 +373,8 @@ TextureImporter:
       name: enemy02
       rect:
         serializedVersion: 2
-        x: 113
-        y: 109
+        x: 114
+        y: 211
         width: 11
         height: 8
       alignment: 0
@@ -359,10 +387,52 @@ TextureImporter:
       name: enemy03
       rect:
         serializedVersion: 2
-        x: 81
-        y: 103
+        x: 55
+        y: 224
         width: 11
         height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: exclamation_mark
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 239
+        width: 6
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: exclamation_mark2
+      rect:
+        serializedVersion: 2
+        x: 119
+        y: 221
+        width: 6
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: exclamation_mark3
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 201
+        width: 16
+        height: 16
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -373,8 +443,8 @@ TextureImporter:
       name: flan
       rect:
         serializedVersion: 2
-        x: 37
-        y: 62
+        x: 68
+        y: 187
         width: 16
         height: 16
       alignment: 0
@@ -387,8 +457,8 @@ TextureImporter:
       name: floor01
       rect:
         serializedVersion: 2
-        x: 73
-        y: 76
+        x: 86
+        y: 184
         width: 16
         height: 16
       alignment: 0
@@ -401,8 +471,8 @@ TextureImporter:
       name: floor02
       rect:
         serializedVersion: 2
-        x: 55
-        y: 59
+        x: 104
+        y: 175
         width: 16
         height: 16
       alignment: 0
@@ -415,8 +485,148 @@ TextureImporter:
       name: floor03
       rect:
         serializedVersion: 2
+        x: 1
+        y: 183
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: floor04
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 183
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: floor05
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 183
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: floor06
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 169
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: floor07
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 166
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: floor08
+      rect:
+        serializedVersion: 2
         x: 91
-        y: 75
+        y: 157
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: floor09
+      rect:
+        serializedVersion: 2
+        x: 109
+        y: 157
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: floor10
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 165
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: floor11
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 165
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: floor12
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 165
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: floor13
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 151
         width: 16
         height: 16
       alignment: 0
@@ -430,7 +640,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 73
-        y: 58
+        y: 148
         width: 16
         height: 16
       alignment: 0
@@ -443,10 +653,10 @@ TextureImporter:
       name: hideout
       rect:
         serializedVersion: 2
-        x: 73
-        y: 7
-        width: 18
-        height: 12
+        x: 97
+        y: 238
+        width: 20
+        height: 17
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -458,8 +668,8 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 72
-        y: 113
-        width: 21
+        y: 241
+        width: 23
         height: 14
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
@@ -471,8 +681,8 @@ TextureImporter:
       name: milk
       rect:
         serializedVersion: 2
-        x: 109
-        y: 73
+        x: 91
+        y: 139
         width: 16
         height: 16
       alignment: 0
@@ -485,8 +695,8 @@ TextureImporter:
       name: player01
       rect:
         serializedVersion: 2
-        x: 81
-        y: 94
+        x: 55
+        y: 215
         width: 11
         height: 7
       alignment: 0
@@ -499,8 +709,8 @@ TextureImporter:
       name: player02
       rect:
         serializedVersion: 2
-        x: 112
-        y: 100
+        x: 55
+        y: 206
         width: 11
         height: 7
       alignment: 0
@@ -513,8 +723,8 @@ TextureImporter:
       name: player03
       rect:
         serializedVersion: 2
-        x: 112
-        y: 91
+        x: 55
+        y: 197
         width: 11
         height: 7
       alignment: 0
@@ -527,24 +737,10 @@ TextureImporter:
       name: player04
       rect:
         serializedVersion: 2
-        x: 21
-        y: 4
+        x: 55
+        y: 188
         width: 11
         height: 7
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: range
-      rect:
-        serializedVersion: 2
-        x: 1
-        y: 103
-        width: 35
-        height: 24
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -555,8 +751,8 @@ TextureImporter:
       name: recipe01
       rect:
         serializedVersion: 2
-        x: 91
-        y: 57
+        x: 109
+        y: 139
         width: 16
         height: 16
       alignment: 0
@@ -569,8 +765,8 @@ TextureImporter:
       name: sponge
       rect:
         serializedVersion: 2
-        x: 109
-        y: 55
+        x: 1
+        y: 147
         width: 16
         height: 16
       alignment: 0
@@ -583,8 +779,8 @@ TextureImporter:
       name: strawberry
       rect:
         serializedVersion: 2
-        x: 1
-        y: 49
+        x: 19
+        y: 147
         width: 16
         height: 16
       alignment: 0
@@ -597,8 +793,8 @@ TextureImporter:
       name: strawberry_tart
       rect:
         serializedVersion: 2
-        x: 19
-        y: 49
+        x: 37
+        y: 147
         width: 16
         height: 16
       alignment: 0
@@ -611,8 +807,8 @@ TextureImporter:
       name: sugar
       rect:
         serializedVersion: 2
-        x: 37
-        y: 44
+        x: 55
+        y: 133
         width: 16
         height: 16
       alignment: 0
@@ -625,8 +821,8 @@ TextureImporter:
       name: sugar_cookies
       rect:
         serializedVersion: 2
-        x: 55
-        y: 41
+        x: 73
+        y: 130
         width: 16
         height: 16
       alignment: 0
@@ -639,8 +835,8 @@ TextureImporter:
       name: waffles
       rect:
         serializedVersion: 2
-        x: 73
-        y: 40
+        x: 91
+        y: 121
         width: 16
         height: 16
       alignment: 0
@@ -653,8 +849,8 @@ TextureImporter:
       name: wall01
       rect:
         serializedVersion: 2
-        x: 91
-        y: 39
+        x: 109
+        y: 121
         width: 16
         height: 16
       alignment: 0
@@ -667,8 +863,8 @@ TextureImporter:
       name: wall02
       rect:
         serializedVersion: 2
-        x: 109
-        y: 37
+        x: 1
+        y: 129
         width: 16
         height: 16
       alignment: 0
@@ -681,8 +877,8 @@ TextureImporter:
       name: wall03
       rect:
         serializedVersion: 2
-        x: 1
-        y: 31
+        x: 19
+        y: 129
         width: 16
         height: 16
       alignment: 0
@@ -695,8 +891,8 @@ TextureImporter:
       name: wall04
       rect:
         serializedVersion: 2
-        x: 19
-        y: 31
+        x: 37
+        y: 129
         width: 16
         height: 16
       alignment: 0
@@ -709,8 +905,8 @@ TextureImporter:
       name: wall05
       rect:
         serializedVersion: 2
-        x: 37
-        y: 26
+        x: 55
+        y: 115
         width: 16
         height: 16
       alignment: 0
@@ -723,8 +919,8 @@ TextureImporter:
       name: wall06
       rect:
         serializedVersion: 2
-        x: 55
-        y: 23
+        x: 73
+        y: 112
         width: 16
         height: 16
       alignment: 0
@@ -737,8 +933,8 @@ TextureImporter:
       name: wall07
       rect:
         serializedVersion: 2
-        x: 73
-        y: 22
+        x: 91
+        y: 103
         width: 16
         height: 16
       alignment: 0
@@ -751,8 +947,8 @@ TextureImporter:
       name: wall08
       rect:
         serializedVersion: 2
-        x: 91
-        y: 21
+        x: 109
+        y: 103
         width: 16
         height: 16
       alignment: 0
@@ -765,8 +961,8 @@ TextureImporter:
       name: wall09
       rect:
         serializedVersion: 2
-        x: 109
-        y: 19
+        x: 1
+        y: 111
         width: 16
         height: 16
       alignment: 0
@@ -779,8 +975,8 @@ TextureImporter:
       name: wall10
       rect:
         serializedVersion: 2
-        x: 1
-        y: 13
+        x: 19
+        y: 111
         width: 16
         height: 16
       alignment: 0
@@ -793,8 +989,8 @@ TextureImporter:
       name: wall11
       rect:
         serializedVersion: 2
-        x: 19
-        y: 13
+        x: 37
+        y: 111
         width: 16
         height: 16
       alignment: 0
@@ -807,8 +1003,8 @@ TextureImporter:
       name: wall12
       rect:
         serializedVersion: 2
-        x: 37
-        y: 8
+        x: 55
+        y: 97
         width: 16
         height: 16
       alignment: 0
@@ -821,8 +1017,8 @@ TextureImporter:
       name: white_box
       rect:
         serializedVersion: 2
-        x: 55
-        y: 5
+        x: 73
+        y: 94
         width: 16
         height: 16
       alignment: 0
