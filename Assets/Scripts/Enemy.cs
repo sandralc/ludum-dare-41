@@ -78,20 +78,17 @@ public class Enemy : MonoBehaviour {
 				if (hitInfo.collider.CompareTag ("Player") && !GameManager.instance.player.hidden) {
 					SoundManager.instance.PlaySingle (detectedSound);
 					lineOfSight.colorGradient = redColor;
+					state = State.Follow;
+					RoomManager.instance.CantLeaveRoom ();
+					GameManager.instance.player.chased = true;
 				}
 				if (hitInfo.collider.CompareTag ("Recipe")) {
 					if (favouriteDessert.Length == 0) {
-						lineOfSight.colorGradient = juicyColor;
-						state = State.Eat;
-						food = hitInfo.transform.gameObject;
-						foodPosition = hitInfo.point;
+						EnemyIsLookingAtRecipe (hitInfo);
 					} else {
 						bool favouriteDessert = IsFavouriteDessert (hitInfo.collider.name);
 						if (favouriteDessert || (!favouriteDessert && Random.value < 0.2)) {
-							lineOfSight.colorGradient = juicyColor;
-							state = State.Eat;
-							food = hitInfo.transform.gameObject;
-							foodPosition = hitInfo.point;
+							EnemyIsLookingAtRecipe (hitInfo);
 						}
 					}
 				}
@@ -105,8 +102,49 @@ public class Enemy : MonoBehaviour {
 			Patrol ();
 		} else if (state.Equals (Enemy.State.Eat)) {
 			Eat ();
-			SoundManager.instance.PlaySingle (eatSound);
+		} else if (state.Equals (Enemy.State.Follow)) {
+			Chase ();
 		}
+	}
+
+	void EnemyIsLookingAtRecipe(RaycastHit2D hitInfo) {
+		lineOfSight.colorGradient = juicyColor;
+		state = State.Eat;
+		SoundManager.instance.PlaySingle (eatSound);
+		GameManager.instance.player.chased = false;
+		RoomManager.instance.CanLeaveRoom ();
+		food = hitInfo.transform.gameObject;
+		foodPosition = hitInfo.point;
+	}
+
+	void Chase() {
+		RaycastHit2D hitInfo = Physics2D.Raycast (transform.position, target.position, overallDetectionRange);
+
+		if (hitInfo.collider != null && hitInfo.collider.CompareTag ("Recipe")) {
+			if (favouriteDessert.Length == 0) {
+				EnemyIsLookingAtRecipe (hitInfo);
+			} else {
+				bool favouriteDessert = IsFavouriteDessert (hitInfo.collider.name);
+				if (favouriteDessert || (!favouriteDessert && Random.value < 0.2)) {
+					EnemyIsLookingAtRecipe (hitInfo);
+				}
+			}
+			lineOfSight.SetPosition (1, hitInfo.point);
+			lineOfSight.colorGradient = juicyColor;
+		} else {
+			if (Vector2.Distance (transform.position, target.position) > .6) {
+				transform.position = Vector2.MoveTowards (transform.position, target.position, speed * Time.deltaTime * 1.2f);
+
+				var dir = new Vector3 (foodPosition.x, foodPosition.y, 0.0f) - transform.position;
+				var angle = Mathf.Atan2 (dir.y, dir.x) * Mathf.Rad2Deg;
+				transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.AngleAxis (angle - 90, Vector3.forward), Time.deltaTime * rotationSpeed);
+			} else {
+				Debug.Log ("Restart Level");
+			}
+			lineOfSight.SetPosition (1, target.position);
+			lineOfSight.colorGradient = redColor;
+		}
+		lineOfSight.SetPosition (0, transform.position);
 	}
 
 	void Patrol() {

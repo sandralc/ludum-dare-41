@@ -17,6 +17,7 @@ public class Player : MonoBehaviour {
 
 	[HideInInspector]public bool hidden = false;
 	[HideInInspector]public bool cooking = false;
+	[HideInInspector]public bool chased = false;
 
 	public GameObject chocolateCake;
 	public GameObject chocolateCookie;
@@ -47,7 +48,7 @@ public class Player : MonoBehaviour {
 	}
 
 	void Update() {
-		if (!cooking) {
+		if (!cooking && !chased) {
 			WalkAnimation ();
 			//Movement!
 //		Vector2 move = new Vector2(Input.GetAxis("Horizontal"), Input.GetAxis("Vertical"));
@@ -75,12 +76,14 @@ public class Player : MonoBehaviour {
 					cooking = true;
 				}
 			}
-			ThrowBait ();
-		} else {
+		} else if (cooking){
 			if (Input.GetKeyDown (KeyCode.Escape)) {
 				HUDManager.instance.CancelCooking ();
 				cooking = false;
 			}
+		}
+		if (!cooking && !hidden) {
+			ThrowBait ();
 		}
 	}
 
