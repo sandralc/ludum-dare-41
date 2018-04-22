@@ -284,4 +284,9 @@ public class HUDManager : MonoBehaviour {
 			return Recipe.Type.None;
 	}
 
+	public void RemoveCookedRecipe(Recipe.Type recipe) {
+		cookedRecipes.Remove (recipe);
+		UpdateCookedRecipes();
+	}
+
 }

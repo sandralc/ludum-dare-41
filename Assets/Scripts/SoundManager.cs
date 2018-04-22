@@ -35,4 +35,9 @@ public class SoundManager : MonoBehaviour {
 		efxSource.Play ();
 	}
 
+	public void PlayBackgroundMusic(AudioClip clip) {
+		musicSource.clip = clip;
+		musicSource.Play ();
+	}
+
 }

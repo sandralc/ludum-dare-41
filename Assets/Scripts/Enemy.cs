@@ -45,6 +45,8 @@ public class Enemy : MonoBehaviour {
 
 	public float startAngleOscillation;
 	private float angleOscillation;
+	private float initialOrientation;
+	private Vector3 initialPosition;
 
 	private BoxCollider2D boxCollider;
 	private Rigidbody2D rb2D;
@@ -64,6 +66,8 @@ public class Enemy : MonoBehaviour {
 
 		overallSpeed = speed;
 		overallDetectionRange = detectionRange;
+		initialOrientation = transform.rotation.eulerAngles.z;
+		initialPosition = transform.position;
 
 		Physics2D.queriesStartInColliders = false;
 	}
@@ -73,7 +77,7 @@ public class Enemy : MonoBehaviour {
 
 		if (state.Equals (State.Patrol)) {
 			RaycastHit2D hitInfo = Physics2D.Raycast (transform.position, transform.up, overallDetectionRange);
-			if (hitInfo.collider != null && !hitInfo.collider.CompareTag("Ingredient") && !hitInfo.collider.CompareTag("RecipePaper")) {
+			if (hitInfo.collider != null && !hitInfo.collider.CompareTag("Ingredient") && !hitInfo.collider.CompareTag("RecipePaper") && !hitInfo.collider.tag.Contains("Room")) {
 				Debug.DrawLine (transform.position, hitInfo.point, Color.red);
 				lineOfSight.SetPosition (1, hitInfo.point);
 				lineOfSight.colorGradient = greenColor;
@@ -191,8 +195,12 @@ public class Enemy : MonoBehaviour {
 	}
 
 	void PatrolLookingAround() {
-		float angle = Mathf.Sin(Time.time) * startAngleOscillation;
+		float angle = Mathf.Sin(Time.time) * startAngleOscillation + initialOrientation;
 		transform.rotation = Quaternion.AngleAxis (angle, Vector3.forward);
+
+		if (Vector2.Distance (transform.position, initialPosition) > 0.1f) {
+			transform.position = Vector2.MoveTowards (transform.position, initialPosition, overallSpeed * Time.deltaTime);
+		}
 	}
 
 	void PatrolVigilance() {

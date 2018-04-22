@@ -205,6 +205,7 @@ public class Player : MonoBehaviour {
 			} else if (recipe.Equals (Recipe.Type.Pannatriffle)) {
 				Instantiate (pannatriffle, transform.position, Quaternion.identity);
 			}
+			GameManager.instance.hudManager.RemoveCookedRecipe (recipe);
 		}
 	}
 
