@@ -135,7 +135,7 @@ public class Enemy : MonoBehaviour {
 			lineOfSight.colorGradient = juicyColor;
 		} else {
 			if (Vector2.Distance (transform.position, target.position) > .6) {
-				transform.position = Vector2.MoveTowards (transform.position, target.position, speed * Time.deltaTime * 1.5f);
+				transform.position = Vector2.MoveTowards (transform.position, target.position, speed * Time.deltaTime);
 
 				var dir = new Vector3 (foodPosition.x, foodPosition.y, 0.0f) - transform.position;
 				var angle = Mathf.Atan2 (dir.y, dir.x) * Mathf.Rad2Deg;

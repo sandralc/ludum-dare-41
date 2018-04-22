@@ -17,6 +17,8 @@ TagManager:
   - RecipePaper
   - Room 4
   - Room 3
+  - Room 5
+  - Room 6
   layers:
   - Default
   - TransparentFX
