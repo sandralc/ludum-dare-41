@@ -68,6 +68,25 @@ TextureImporter:
     21300122: floor11
     21300124: floor12
     21300126: floor13
+    21300128: enemy04
+    21300130: enemy05
+    21300132: enemy06
+    21300134: enemy07
+    21300136: enemy08
+    21300138: enemy09
+    21300140: enemy10
+    21300142: enemy11
+    21300144: enemy12
+    21300146: enemy13
+    21300148: enemy14
+    21300150: recipe02
+    21300152: recipe03
+    21300154: recipe04
+    21300156: recipe05
+    21300158: recipe06
+    21300160: recipe07
+    21300162: recipe08
+    21300164: recipe09
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -163,7 +182,7 @@ TextureImporter:
       name: butter
       rect:
         serializedVersion: 2
-        x: 71
+        x: 72
         y: 223
         width: 16
         height: 16
@@ -205,7 +224,7 @@ TextureImporter:
       name: chocolate
       rect:
         serializedVersion: 2
-        x: 96
+        x: 97
         y: 220
         width: 16
         height: 16
@@ -290,7 +309,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 104
-        y: 193
+        y: 189
         width: 16
         height: 16
       alignment: 0
@@ -317,7 +336,7 @@ TextureImporter:
       name: door02
       rect:
         serializedVersion: 2
-        x: 89
+        x: 90
         y: 221
         width: 5
         height: 18
@@ -359,8 +378,8 @@ TextureImporter:
       name: enemy01
       rect:
         serializedVersion: 2
-        x: 58
-        y: 234
+        x: 55
+        y: 151
         width: 11
         height: 8
       alignment: 0
@@ -373,8 +392,8 @@ TextureImporter:
       name: enemy02
       rect:
         serializedVersion: 2
-        x: 114
-        y: 211
+        x: 73
+        y: 141
         width: 11
         height: 8
       alignment: 0
@@ -387,10 +406,164 @@ TextureImporter:
       name: enemy03
       rect:
         serializedVersion: 2
-        x: 55
-        y: 224
+        x: 73
+        y: 131
         width: 11
         height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: enemy04
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 218
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: enemy05
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 206
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: enemy06
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 194
+        width: 11
+        height: 10
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: enemy07
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 121
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: enemy08
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 111
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: enemy09
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 101
+        width: 11
+        height: 8
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: enemy10
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 183
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: enemy11
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 172
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: enemy12
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 161
+        width: 11
+        height: 9
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: enemy13
+      rect:
+        serializedVersion: 2
+        x: 58
+        y: 230
+        width: 12
+        height: 12
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: enemy14
+      rect:
+        serializedVersion: 2
+        x: 115
+        y: 207
+        width: 12
+        height: 12
       alignment: 0
       pivot: {x: 0.5, y: 0.5}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -472,7 +645,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 104
-        y: 175
+        y: 171
         width: 16
         height: 16
       alignment: 0
@@ -527,7 +700,7 @@ TextureImporter:
       name: floor06
       rect:
         serializedVersion: 2
-        x: 55
+        x: 68
         y: 169
         width: 16
         height: 16
@@ -541,7 +714,7 @@ TextureImporter:
       name: floor07
       rect:
         serializedVersion: 2
-        x: 73
+        x: 86
         y: 166
         width: 16
         height: 16
@@ -555,8 +728,8 @@ TextureImporter:
       name: floor08
       rect:
         serializedVersion: 2
-        x: 91
-        y: 157
+        x: 104
+        y: 153
         width: 16
         height: 16
       alignment: 0
@@ -567,20 +740,6 @@ TextureImporter:
       tessellationDetail: -1
     - serializedVersion: 2
       name: floor09
-      rect:
-        serializedVersion: 2
-        x: 109
-        y: 157
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: floor10
       rect:
         serializedVersion: 2
         x: 1
@@ -594,7 +753,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: floor11
+      name: floor10
       rect:
         serializedVersion: 2
         x: 19
@@ -608,7 +767,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: floor12
+      name: floor11
       rect:
         serializedVersion: 2
         x: 37
@@ -622,11 +781,25 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
+      name: floor12
+      rect:
+        serializedVersion: 2
+        x: 68
+        y: 151
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
       name: floor13
       rect:
         serializedVersion: 2
-        x: 55
-        y: 151
+        x: 86
+        y: 148
         width: 16
         height: 16
       alignment: 0
@@ -639,8 +812,8 @@ TextureImporter:
       name: flour
       rect:
         serializedVersion: 2
-        x: 73
-        y: 148
+        x: 104
+        y: 135
         width: 16
         height: 16
       alignment: 0
@@ -681,8 +854,8 @@ TextureImporter:
       name: milk
       rect:
         serializedVersion: 2
-        x: 91
-        y: 139
+        x: 1
+        y: 147
         width: 16
         height: 16
       alignment: 0
@@ -695,8 +868,8 @@ TextureImporter:
       name: player01
       rect:
         serializedVersion: 2
-        x: 55
-        y: 215
+        x: 73
+        y: 92
         width: 11
         height: 7
       alignment: 0
@@ -709,8 +882,8 @@ TextureImporter:
       name: player02
       rect:
         serializedVersion: 2
-        x: 55
-        y: 206
+        x: 73
+        y: 83
         width: 11
         height: 7
       alignment: 0
@@ -723,8 +896,8 @@ TextureImporter:
       name: player03
       rect:
         serializedVersion: 2
-        x: 55
-        y: 197
+        x: 73
+        y: 74
         width: 11
         height: 7
       alignment: 0
@@ -737,8 +910,8 @@ TextureImporter:
       name: player04
       rect:
         serializedVersion: 2
-        x: 55
-        y: 188
+        x: 1
+        y: 49
         width: 11
         height: 7
       alignment: 0
@@ -749,34 +922,6 @@ TextureImporter:
       tessellationDetail: -1
     - serializedVersion: 2
       name: recipe01
-      rect:
-        serializedVersion: 2
-        x: 109
-        y: 139
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: sponge
-      rect:
-        serializedVersion: 2
-        x: 1
-        y: 147
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: strawberry
       rect:
         serializedVersion: 2
         x: 19
@@ -790,7 +935,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: strawberry_tart
+      name: recipe02
       rect:
         serializedVersion: 2
         x: 37
@@ -804,7 +949,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: sugar
+      name: recipe03
       rect:
         serializedVersion: 2
         x: 55
@@ -818,10 +963,10 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: sugar_cookies
+      name: recipe04
       rect:
         serializedVersion: 2
-        x: 73
+        x: 86
         y: 130
         width: 16
         height: 16
@@ -832,11 +977,11 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: waffles
+      name: recipe05
       rect:
         serializedVersion: 2
-        x: 91
-        y: 121
+        x: 104
+        y: 117
         width: 16
         height: 16
       alignment: 0
@@ -846,21 +991,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: wall01
-      rect:
-        serializedVersion: 2
-        x: 109
-        y: 121
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: wall02
+      name: recipe06
       rect:
         serializedVersion: 2
         x: 1
@@ -874,7 +1005,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: wall03
+      name: recipe07
       rect:
         serializedVersion: 2
         x: 19
@@ -888,7 +1019,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: wall04
+      name: recipe08
       rect:
         serializedVersion: 2
         x: 37
@@ -902,7 +1033,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: wall05
+      name: recipe09
       rect:
         serializedVersion: 2
         x: 55
@@ -916,10 +1047,10 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: wall06
+      name: sponge
       rect:
         serializedVersion: 2
-        x: 73
+        x: 86
         y: 112
         width: 16
         height: 16
@@ -930,11 +1061,11 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: wall07
+      name: strawberry
       rect:
         serializedVersion: 2
-        x: 91
-        y: 103
+        x: 104
+        y: 99
         width: 16
         height: 16
       alignment: 0
@@ -944,11 +1075,11 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: wall08
+      name: strawberry_tart
       rect:
         serializedVersion: 2
-        x: 109
-        y: 103
+        x: 86
+        y: 94
         width: 16
         height: 16
       alignment: 0
@@ -958,7 +1089,21 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: wall09
+      name: sugar
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 81
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: sugar_cookies
       rect:
         serializedVersion: 2
         x: 1
@@ -972,7 +1117,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: wall10
+      name: waffles
       rect:
         serializedVersion: 2
         x: 19
@@ -986,7 +1131,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: wall11
+      name: wall01
       rect:
         serializedVersion: 2
         x: 37
@@ -1000,7 +1145,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: wall12
+      name: wall02
       rect:
         serializedVersion: 2
         x: 55
@@ -1014,11 +1159,151 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
+      name: wall03
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 76
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: wall04
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 63
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: wall05
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 93
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: wall06
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 93
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: wall07
+      rect:
+        serializedVersion: 2
+        x: 37
+        y: 93
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: wall08
+      rect:
+        serializedVersion: 2
+        x: 55
+        y: 79
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: wall09
+      rect:
+        serializedVersion: 2
+        x: 86
+        y: 58
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: wall10
+      rect:
+        serializedVersion: 2
+        x: 104
+        y: 45
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: wall11
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 27
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: wall12
+      rect:
+        serializedVersion: 2
+        x: 1
+        y: 61
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
       name: white_box
       rect:
         serializedVersion: 2
-        x: 73
-        y: 94
+        x: 1
+        y: 9
         width: 16
         height: 16
       alignment: 0

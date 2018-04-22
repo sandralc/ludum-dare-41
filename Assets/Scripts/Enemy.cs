@@ -5,11 +5,14 @@ using UnityEngine;
 public class Enemy : MonoBehaviour {
 
 	public enum State {Patrol, Eat, Follow};
+	public enum PatrolStyle {Coverage, LookAround, Vigilance};
 
 	public float speed = 10f;
 	public float rotationSpeed = 10f;
 	public float detectionRange = 10;
 	public float startWaitTime;
+
+	public PatrolStyle patrolStyle;
 
 	public LineRenderer lineOfSight;
 	public Gradient redColor;
@@ -40,8 +43,8 @@ public class Enemy : MonoBehaviour {
 	public AudioClip eatSound;
 	public AudioClip detectedSound;
 
-//	public float startAngleOscillation;
-//	private float angleOscillation;
+	public float startAngleOscillation;
+	private float angleOscillation;
 
 	private BoxCollider2D boxCollider;
 	private Rigidbody2D rb2D;
@@ -61,7 +64,6 @@ public class Enemy : MonoBehaviour {
 
 		overallSpeed = speed;
 		overallDetectionRange = detectionRange;
-//		angleOscillation = startAngleOscillation;
 
 		Physics2D.queriesStartInColliders = false;
 	}
@@ -148,6 +150,20 @@ public class Enemy : MonoBehaviour {
 	}
 
 	void Patrol() {
+		switch (patrolStyle) {
+		case PatrolStyle.Coverage:
+			PatrolCoverage ();
+			break;
+		case PatrolStyle.LookAround:
+			PatrolLookingAround ();
+			break;
+		case PatrolStyle.Vigilance:
+			PatrolVigilance ();
+			break;
+		}
+	}
+
+	void PatrolCoverage() {
 		transform.position = Vector2.MoveTowards (transform.position, moveSpots [actualSpot].position, overallSpeed * Time.deltaTime);
 
 		if (Vector2.Distance (transform.position, moveSpots [actualSpot].position) < 0.2f) {
@@ -172,6 +188,15 @@ public class Enemy : MonoBehaviour {
 			var angle = Mathf.Atan2 (dir.y, dir.x) * Mathf.Rad2Deg;
 			transform.rotation = Quaternion.Slerp(transform.rotation, Quaternion.AngleAxis (angle - 90, Vector3.forward), Time.deltaTime * rotationSpeed);
 		}
+	}
+
+	void PatrolLookingAround() {
+		float angle = Mathf.Sin(Time.time) * startAngleOscillation;
+		transform.rotation = Quaternion.AngleAxis (angle, Vector3.forward);
+	}
+
+	void PatrolVigilance() {
+		
 	}
 
 	void Eat() {
