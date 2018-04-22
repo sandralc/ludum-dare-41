@@ -19,6 +19,7 @@ TagManager:
   - Room 3
   - Room 5
   - Room 6
+  - Room 7
   layers:
   - Default
   - TransparentFX
