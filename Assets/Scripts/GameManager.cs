@@ -8,8 +8,6 @@ public class GameManager : MonoBehaviour {
 	public static GameManager instance = null;
 	public HUDManager hudManager;
 
-	public GameObject[] respawnPoints;
-
 	public static Dictionary<Ingredient.Type, int> collectedIngredients;
 	public static Dictionary<int, Sprite> collectedRecipePapers;
 
@@ -36,11 +34,6 @@ public class GameManager : MonoBehaviour {
 			collectedRecipePapers = new Dictionary<int, Sprite> ();
 		}
 	}
-	
-	// Update is called once per frame
-	void Update () {
-		
-	}
 
 	public void GameOver() {
 		
@@ -54,6 +47,6 @@ public class GameManager : MonoBehaviour {
 
 	void Respawn() {
 
-		player.Spawn (respawnPoints [RoomManager.instance.GetCurrentRoom ()].transform.position);
+		player.Spawn (player.respawnPoints [RoomManager.instance.GetCurrentRoom ()].transform.position);
 	}
 }

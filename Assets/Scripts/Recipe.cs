@@ -4,6 +4,6 @@ using UnityEngine;
 
 public class Recipe : MonoBehaviour {
 
-	public enum Type {Sponge, ChocolateCookies, StrawberryTart, ChocolateCake, Flan, SugarCookies, Crepes, Waffles, Croissant, ChocolateShot, None}
+	public enum Type {Sponge, ChocolateCookies, StrawberryTart, ChocolateCake, Flan, SugarCookies, Crepes, Waffles, Croissant, ChocolateShot, None, Pannatriffle}
 
 }

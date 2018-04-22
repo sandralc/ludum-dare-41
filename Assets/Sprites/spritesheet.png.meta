@@ -87,6 +87,7 @@ TextureImporter:
     21300160: recipe07
     21300162: recipe08
     21300164: recipe09
+    21300166: pannatrifle
   externalObjects: {}
   serializedVersion: 4
   mipmaps:
@@ -865,6 +866,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
+      name: pannatrifle
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 147
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
       name: player01
       rect:
         serializedVersion: 2
@@ -924,7 +939,7 @@ TextureImporter:
       name: recipe01
       rect:
         serializedVersion: 2
-        x: 19
+        x: 37
         y: 147
         width: 16
         height: 16
@@ -938,20 +953,6 @@ TextureImporter:
       name: recipe02
       rect:
         serializedVersion: 2
-        x: 37
-        y: 147
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: recipe03
-      rect:
-        serializedVersion: 2
         x: 55
         y: 133
         width: 16
@@ -963,7 +964,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: recipe04
+      name: recipe03
       rect:
         serializedVersion: 2
         x: 86
@@ -977,7 +978,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: recipe05
+      name: recipe04
       rect:
         serializedVersion: 2
         x: 104
@@ -991,10 +992,24 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: recipe06
+      name: recipe05
       rect:
         serializedVersion: 2
         x: 1
+        y: 129
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: recipe06
+      rect:
+        serializedVersion: 2
+        x: 19
         y: 129
         width: 16
         height: 16
@@ -1008,7 +1023,7 @@ TextureImporter:
       name: recipe07
       rect:
         serializedVersion: 2
-        x: 19
+        x: 37
         y: 129
         width: 16
         height: 16
@@ -1022,20 +1037,6 @@ TextureImporter:
       name: recipe08
       rect:
         serializedVersion: 2
-        x: 37
-        y: 129
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: recipe09
-      rect:
-        serializedVersion: 2
         x: 55
         y: 115
         width: 16
@@ -1047,7 +1048,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: sponge
+      name: recipe09
       rect:
         serializedVersion: 2
         x: 86
@@ -1061,7 +1062,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: strawberry
+      name: sponge
       rect:
         serializedVersion: 2
         x: 104
@@ -1075,7 +1076,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: strawberry_tart
+      name: strawberry
       rect:
         serializedVersion: 2
         x: 86
@@ -1089,7 +1090,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: sugar
+      name: strawberry_tart
       rect:
         serializedVersion: 2
         x: 104
@@ -1103,10 +1104,24 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: sugar_cookies
+      name: sugar
       rect:
         serializedVersion: 2
         x: 1
+        y: 111
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: sugar_cookies
+      rect:
+        serializedVersion: 2
+        x: 19
         y: 111
         width: 16
         height: 16
@@ -1120,7 +1135,7 @@ TextureImporter:
       name: waffles
       rect:
         serializedVersion: 2
-        x: 19
+        x: 37
         y: 111
         width: 16
         height: 16
@@ -1134,20 +1149,6 @@ TextureImporter:
       name: wall01
       rect:
         serializedVersion: 2
-        x: 37
-        y: 111
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0.5, y: 0.5}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-    - serializedVersion: 2
-      name: wall02
-      rect:
-        serializedVersion: 2
         x: 55
         y: 97
         width: 16
@@ -1159,7 +1160,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: wall03
+      name: wall02
       rect:
         serializedVersion: 2
         x: 86
@@ -1173,7 +1174,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: wall04
+      name: wall03
       rect:
         serializedVersion: 2
         x: 104
@@ -1187,7 +1188,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: wall05
+      name: wall04
       rect:
         serializedVersion: 2
         x: 1
@@ -1201,7 +1202,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: wall06
+      name: wall05
       rect:
         serializedVersion: 2
         x: 19
@@ -1215,7 +1216,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: wall07
+      name: wall06
       rect:
         serializedVersion: 2
         x: 37
@@ -1229,7 +1230,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: wall08
+      name: wall07
       rect:
         serializedVersion: 2
         x: 55
@@ -1243,7 +1244,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: wall09
+      name: wall08
       rect:
         serializedVersion: 2
         x: 86
@@ -1257,7 +1258,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: wall10
+      name: wall09
       rect:
         serializedVersion: 2
         x: 104
@@ -1271,7 +1272,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: wall11
+      name: wall10
       rect:
         serializedVersion: 2
         x: 1
@@ -1285,7 +1286,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: wall12
+      name: wall11
       rect:
         serializedVersion: 2
         x: 1
@@ -1299,11 +1300,25 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
     - serializedVersion: 2
-      name: white_box
+      name: wall12
       rect:
         serializedVersion: 2
         x: 1
         y: 9
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+    - serializedVersion: 2
+      name: white_box
+      rect:
+        serializedVersion: 2
+        x: 19
+        y: 75
         width: 16
         height: 16
       alignment: 0

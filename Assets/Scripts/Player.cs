@@ -29,6 +29,7 @@ public class Player : MonoBehaviour {
 	public GameObject sponge;
 	public GameObject sugarCookies;
 	public GameObject waffles;
+	public GameObject pannatriffle;
 
 	public AudioClip pickUpSound;
 	public AudioClip pickUpSound2;
@@ -37,6 +38,8 @@ public class Player : MonoBehaviour {
 	public AudioClip placeObjectSound1;
 	public AudioClip placeObjectSound2;
 	public AudioClip aahSound;
+
+	[HideInInspector]public GameObject[] respawnPoints;
 
 	// Use this for initialization
 	void Start () {
@@ -47,7 +50,14 @@ public class Player : MonoBehaviour {
 		animator = GetComponent<Animator> ();
 		Physics2D.queriesStartInColliders = false;
 
-		transform.position = GameManager.instance.respawnPoints [RoomManager.room].transform.position;
+		GameObject[] allRespawnPoints = GameObject.FindGameObjectsWithTag ("Respawn Point");
+		respawnPoints = new GameObject[allRespawnPoints.Length];
+		for (int i = 0; i < allRespawnPoints.Length; i++) {
+			var index = int.Parse(allRespawnPoints [i].name.Split (" "[0]) [1]);
+			respawnPoints [index] = allRespawnPoints [i];
+		}
+
+		transform.position = respawnPoints [RoomManager.room].transform.position;
 		RoomManager.instance.GoToRoom (RoomManager.room);
 	}
 
@@ -190,6 +200,10 @@ public class Player : MonoBehaviour {
 				Instantiate (sugarCookies, transform.position, Quaternion.identity);
 			} else if (recipe.Equals (Recipe.Type.Waffles)) {
 				Instantiate (waffles, transform.position, Quaternion.identity);
+			} else if (recipe.Equals (Recipe.Type.ChocolateShot)) {
+				Instantiate (chocolateShot, transform.position, Quaternion.identity);
+			} else if (recipe.Equals (Recipe.Type.Pannatriffle)) {
+				Instantiate (pannatriffle, transform.position, Quaternion.identity);
 			}
 		}
 	}

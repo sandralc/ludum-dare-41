@@ -16,6 +16,7 @@ public class HUDManager : MonoBehaviour {
 	public Sprite sponge;
 	public Sprite sugarCookies;
 	public Sprite waffles;
+	public Sprite pannatriffle;
 
 	public GameObject hud;
 	public GameObject recipePaperPrefab;
@@ -246,6 +247,7 @@ public class HUDManager : MonoBehaviour {
 		validRecipes.Add (Recipe.Type.Sponge, "Egg,Flour,Sugar");
 		validRecipes.Add (Recipe.Type.SugarCookies, "Butter,Egg,Flour,Milk,Sugar");
 		validRecipes.Add (Recipe.Type.Waffles, "Butter,Cream,Egg,Flour,Strawberry,Sugar");
+		validRecipes.Add (Recipe.Type.Pannatriffle, "Butter,Chocolate,Cream,Egg,Flour,Milk,Strawberry,Sugar");
 	}
 
 	Sprite GetSpriteForRecipeType (Recipe.Type recipeType) {
@@ -269,6 +271,8 @@ public class HUDManager : MonoBehaviour {
 			return sugarCookies;
 		} else if (recipeType.Equals (Recipe.Type.Waffles)) {
 			return waffles;
+		} else if (recipeType.Equals (Recipe.Type.Pannatriffle)) {
+			return pannatriffle;
 		}
 		return chocolateCake;
 	}

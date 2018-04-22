@@ -20,6 +20,9 @@ TagManager:
   - Room 5
   - Room 6
   - Room 7
+  - Room 8
+  - Room 9
+  - Respawn Point
   layers:
   - Default
   - TransparentFX

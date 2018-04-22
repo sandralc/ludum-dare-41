@@ -73,7 +73,7 @@ public class Enemy : MonoBehaviour {
 
 		if (state.Equals (State.Patrol)) {
 			RaycastHit2D hitInfo = Physics2D.Raycast (transform.position, transform.up, overallDetectionRange);
-			if (hitInfo.collider != null) {
+			if (hitInfo.collider != null && !hitInfo.collider.CompareTag("Ingredient") && !hitInfo.collider.CompareTag("RecipePaper")) {
 				Debug.DrawLine (transform.position, hitInfo.point, Color.red);
 				lineOfSight.SetPosition (1, hitInfo.point);
 				lineOfSight.colorGradient = greenColor;
