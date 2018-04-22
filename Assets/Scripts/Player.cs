@@ -140,12 +140,16 @@ public class Player : MonoBehaviour {
 	void ThrowBait() {
 		if (Input.GetKeyDown (KeyCode.Alpha1) || Input.GetKeyDown (KeyCode.Keypad1)) {
 			DropRecipe (0);
+			SoundManager.instance.RandomizeSfx (placeObjectSound1, placeObjectSound2);
 		} else if (Input.GetKeyDown (KeyCode.Alpha2) || Input.GetKeyDown (KeyCode.Keypad2)) {
 			DropRecipe (1);
+			SoundManager.instance.RandomizeSfx (placeObjectSound1, placeObjectSound2);
 		} else if (Input.GetKeyDown (KeyCode.Alpha3) || Input.GetKeyDown (KeyCode.Keypad3)) {
 			DropRecipe (2);
+			SoundManager.instance.RandomizeSfx (placeObjectSound1, placeObjectSound2);
 		} else if (Input.GetKeyDown (KeyCode.Alpha4) || Input.GetKeyDown (KeyCode.Keypad4)) {
 			DropRecipe (3);
+			SoundManager.instance.RandomizeSfx (placeObjectSound1, placeObjectSound2);
 		}
 	}
 
@@ -171,7 +175,6 @@ public class Player : MonoBehaviour {
 			} else if (recipe.Equals (Recipe.Type.Waffles)) {
 				Instantiate (waffles, transform.position, Quaternion.identity);
 			}
-			SoundManager.instance.RandomizeSfx (placeObjectSound1, placeObjectSound2);
 		}
 	}
 

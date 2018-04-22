@@ -163,6 +163,7 @@ public class HUDManager : MonoBehaviour {
 		foreach(KeyValuePair<Ingredient.Type, Button> button in ingredientCookingButtons) {
 			button.Value.onClick.AddListener (() => {
 				AddIngredientToRecipe(button.Key);
+				SoundManager.instance.PlaySingle(selectSound);
 			});
 		}
 	}
