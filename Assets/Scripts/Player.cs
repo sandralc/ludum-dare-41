@@ -36,6 +36,7 @@ public class Player : MonoBehaviour {
 	public AudioClip kitchenSound;
 	public AudioClip placeObjectSound1;
 	public AudioClip placeObjectSound2;
+	public AudioClip aahSound;
 
 	// Use this for initialization
 	void Start () {
@@ -135,6 +136,7 @@ public class Player : MonoBehaviour {
 				GameManager.collectedRecipePapers.Add (recipePaperIndex, other.gameObject.GetComponent<SpriteRenderer> ().sprite);
 			}
 			GameManager.instance.hudManager.UpdateRecipePapersScore ();
+			SoundManager.instance.PlaySingle (aahSound);
 			Destroy (other.gameObject);
 		}
 	}
