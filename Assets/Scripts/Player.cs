@@ -99,6 +99,10 @@ public class Player : MonoBehaviour {
 		if (!cooking && !hidden) {
 			ThrowBait ();
 		}
+		if (chased && cooking) {
+			GameManager.instance.hudManager.CancelCooking ();
+			cooking = false;
+		}
 	}
 
 	void WalkAnimation() {
