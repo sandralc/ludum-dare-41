@@ -36,7 +36,7 @@ public class Ingredient : MonoBehaviour {
 	}
 
 	public void Collect() {
-		GameManager.instance.collectedIngredients [ingredientType]++;
+		GameManager.collectedIngredients [ingredientType]++;
 		Destroy (gameObject);
 	}
 }

@@ -6,10 +6,11 @@ using UnityEngine.Tilemaps;
 public class RoomManager : MonoBehaviour {
 
 	public static RoomManager instance = null;
+	public static int room = 0;
+
 	public GameObject[] rooms;
 	private TilemapCollider2D[] roomDoorsTilemap;
 
-	private int room = 0;
 	private bool cantLeaveRoom = false;
 
 	// Use this for initialization
@@ -28,7 +29,7 @@ public class RoomManager : MonoBehaviour {
 	void InitRooms() {
 		int index = 0;
 		foreach (GameObject room in rooms) {
-			if (index > 0) {
+			if (index != RoomManager.room) {
 				room.SetActive (false);
 			} else {
 				room.SetActive (true);
@@ -41,17 +42,22 @@ public class RoomManager : MonoBehaviour {
 		roomDoorsTilemap = new TilemapCollider2D[rooms.Length];
 		for(int i = 0; i < rooms.Length; i++) {
 			roomDoorsTilemap [i] = rooms [i].transform.Find ("Grid/Doors").GetComponent<TilemapCollider2D> ();
+			if (roomDoorsTilemap [i] != null)
+				roomDoorsTilemap [i].enabled = false;
 		}
 	}
 
 	public void GoToRoom(int roomIndex) {
-		if (roomIndex != room) {
-			Debug.Log ("Going to room " + roomIndex);
-			rooms [room].SetActive (false);
-			rooms [roomIndex].SetActive (true);
-			room = roomIndex;
-			CanLeaveRoom ();
-		}
+		Debug.Log ("Going to room " + roomIndex);
+		Debug.Log ("Going to room " + roomIndex);
+		rooms [room].SetActive (false);
+		rooms [roomIndex].SetActive (true);
+		room = roomIndex;
+		CanLeaveRoom ();
+	}
+
+	public int GetCurrentRoom() {
+		return room;
 	}
 
 	public void CantLeaveRoom() {

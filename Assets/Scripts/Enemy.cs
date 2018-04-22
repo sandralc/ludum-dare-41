@@ -79,7 +79,7 @@ public class Enemy : MonoBehaviour {
 					SoundManager.instance.PlaySingle (detectedSound);
 					lineOfSight.colorGradient = redColor;
 					state = State.Follow;
-					RoomManager.instance.CantLeaveRoom ();
+//					RoomManager.instance.CantLeaveRoom ();
 					GameManager.instance.player.chased = true;
 				}
 				if (hitInfo.collider.CompareTag ("Recipe")) {
@@ -112,7 +112,7 @@ public class Enemy : MonoBehaviour {
 		state = State.Eat;
 		SoundManager.instance.PlaySingle (eatSound);
 		GameManager.instance.player.chased = false;
-		RoomManager.instance.CanLeaveRoom ();
+//		RoomManager.instance.CanLeaveRoom ();
 		food = hitInfo.transform.gameObject;
 		foodPosition = hitInfo.point;
 	}
@@ -133,13 +133,13 @@ public class Enemy : MonoBehaviour {
 			lineOfSight.colorGradient = juicyColor;
 		} else {
 			if (Vector2.Distance (transform.position, target.position) > .6) {
-				transform.position = Vector2.MoveTowards (transform.position, target.position, speed * Time.deltaTime * 1.2f);
+				transform.position = Vector2.MoveTowards (transform.position, target.position, speed * Time.deltaTime * 1.5f);
 
 				var dir = new Vector3 (foodPosition.x, foodPosition.y, 0.0f) - transform.position;
 				var angle = Mathf.Atan2 (dir.y, dir.x) * Mathf.Rad2Deg;
 				transform.rotation = Quaternion.Slerp (transform.rotation, Quaternion.AngleAxis (angle - 90, Vector3.forward), Time.deltaTime * rotationSpeed);
 			} else {
-				Debug.Log ("Restart Level");
+				GameManager.instance.GameOver ();
 			}
 			lineOfSight.SetPosition (1, target.position);
 			lineOfSight.colorGradient = redColor;

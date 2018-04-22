@@ -1,12 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour {
 
 	public static GameManager instance = null;
+	public HUDManager hudManager;
 
-	public Dictionary<Ingredient.Type, int> collectedIngredients;
+	public GameObject[] respawnPoints;
+
+	public static Dictionary<Ingredient.Type, int> collectedIngredients;
 
 	[HideInInspector]public Player player;
 	[HideInInspector]public int score = 0;
@@ -21,10 +25,12 @@ public class GameManager : MonoBehaviour {
 	}
 
 	void InitGame() {
-		collectedIngredients = new Dictionary<Ingredient.Type, int>();
-		string[] ingredientTypeNames = System.Enum.GetNames (typeof(Ingredient.Type));
-		for (int i = 0; i < ingredientTypeNames.Length; i++) {
-			collectedIngredients.Add ((Ingredient.Type) System.Enum.Parse (typeof(Ingredient.Type), ingredientTypeNames[i]), 0);
+		if (collectedIngredients == null) {
+			collectedIngredients = new Dictionary<Ingredient.Type, int> ();
+			string[] ingredientTypeNames = System.Enum.GetNames (typeof(Ingredient.Type));
+			for (int i = 0; i < ingredientTypeNames.Length; i++) {
+				collectedIngredients.Add ((Ingredient.Type)System.Enum.Parse (typeof(Ingredient.Type), ingredientTypeNames [i]), 0);
+			}
 		}
 	}
 	
@@ -34,6 +40,17 @@ public class GameManager : MonoBehaviour {
 	}
 
 	public void GameOver() {
-		//TODO - Restart current room
+		
+		int backwardsRoom = RoomManager.instance.GetCurrentRoom() + 1;
+		if (backwardsRoom < 0)
+			backwardsRoom = 0;
+		RoomManager.room = backwardsRoom;
+
+		SceneManager.LoadScene(0);
+	}
+
+	void Respawn() {
+
+		player.Spawn (respawnPoints [RoomManager.instance.GetCurrentRoom ()].transform.position);
 	}
 }

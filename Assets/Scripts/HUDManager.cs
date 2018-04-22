@@ -2,10 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.EventSystems;
 
 public class HUDManager : MonoBehaviour {
 
-	public static HUDManager instance = null;
 	public Sprite chocolateCake;
 	public Sprite chocolateCookie;
 	public Sprite chocolateShot;
@@ -17,7 +17,11 @@ public class HUDManager : MonoBehaviour {
 	public Sprite sugarCookies;
 	public Sprite waffles;
 
+	public GameObject hud;
+
 	public AudioClip selectSound;
+	public AudioClip nopeSound1;
+	public AudioClip nopeSound2;
 
 	private Text score;
 	private Image[] recipeSlots;
@@ -33,17 +37,17 @@ public class HUDManager : MonoBehaviour {
 	private Dictionary<Recipe.Type, string> validRecipes;
 	private List<Recipe.Type> cookedRecipes;
 
+	private GameObject selectedGameObjByDefault; //Highlighted first!
+
 	// Use this for initialization
 	void Awake () {
-		if (instance == null)
-			instance = this;
-		else if (instance != this)
-			Destroy (gameObject);
-		DontDestroyOnLoad (gameObject);
+		selectedGameObjByDefault = EventSystem.current.currentSelectedGameObject;
+		InitHUD ();
+		cookingPanel.SetActive (false);
+		InitValidRecipes ();
 	}
 
 	void InitHUD() {
-		GameObject hud = GameObject.FindGameObjectWithTag ("HUD");
 		score = hud.transform.Find ("Score").GetComponent<Text> ();
 
 		recipeSlots = new Image[4];
@@ -101,6 +105,9 @@ public class HUDManager : MonoBehaviour {
 					UpdateCookedRecipes();
 					LaunchCooking();
 				}
+			} else {
+				SoundManager.instance.PlaySingle(nopeSound1);
+				LaunchCooking();
 			}
 		});
 
@@ -109,10 +116,6 @@ public class HUDManager : MonoBehaviour {
 	}
 
 	void Start() {
-		InitHUD ();
-		cookingPanel.SetActive (false);
-		InitValidRecipes ();
-
 		UpdateScore ();
 		UpdateIngredients ();
 		UpdateCookedRecipes ();
@@ -123,7 +126,7 @@ public class HUDManager : MonoBehaviour {
 	}
 
 	public void UpdateIngredients() {
-		Dictionary<Ingredient.Type, int> collectedIngredients = GameManager.instance.collectedIngredients;
+		Dictionary<Ingredient.Type, int> collectedIngredients = GameManager.collectedIngredients;
 		foreach (KeyValuePair<Ingredient.Type, int> collectedIngredient in collectedIngredients) {
 			ingredientSlots [collectedIngredient.Key].text = "x " + collectedIngredient.Value;
 		}
@@ -144,14 +147,17 @@ public class HUDManager : MonoBehaviour {
 
 	public void SubstractUsedIngredients() {
 		foreach (KeyValuePair<Ingredient.Type, int> ingredientSpent in recipe) {
-			GameManager.instance.collectedIngredients [ingredientSpent.Key]--;
+			GameManager.collectedIngredients [ingredientSpent.Key]--;
 		}
 	}
 
 	public void LaunchCooking() {
+		Debug.Log ("Launched cooking");
 		cookingPanel.SetActive (true);
 		ClearRecipe ();
 		UpdateIngredientCookingButtonsText ();
+
+		EventSystem.current.SetSelectedGameObject(selectedGameObjByDefault);
 	}
 
 	public void CancelCooking() {
@@ -171,18 +177,18 @@ public class HUDManager : MonoBehaviour {
 	void UpdateIngredientCookingButtonsText() {
 		Debug.Log ("Updating all the ingredieents");
 		foreach (KeyValuePair<Ingredient.Type, Text> ingredientText in ingredientCookingButtonsText) {
-			ingredientCookingButtonsText [ingredientText.Key].text = "x" + GameManager.instance.collectedIngredients [ingredientText.Key];
+			ingredientCookingButtonsText [ingredientText.Key].text = "x" + GameManager.collectedIngredients [ingredientText.Key];
 		}
 	}
 
 	void AddIngredientToRecipe(Ingredient.Type ingredient) {
-		if (!recipe.ContainsKey (ingredient) && GameManager.instance.collectedIngredients[ingredient]>0) {
+		if (!recipe.ContainsKey (ingredient) && GameManager.collectedIngredients[ingredient]>0) {
 			recipe.Add (ingredient, 1);
 			if (recipeText.text != "") {
 				recipeText.text += ", ";
 			}
 			recipeText.text += ingredient.ToString().ToLower();
-			ingredientCookingButtonsText [ingredient].text = "x" + (GameManager.instance.collectedIngredients [ingredient] - 1);
+			ingredientCookingButtonsText [ingredient].text = "x" + (GameManager.collectedIngredients [ingredient] - 1);
 		}
 	}
 

@@ -45,6 +45,9 @@ public class Player : MonoBehaviour {
 		renderer = GetComponent<SpriteRenderer> ();
 		animator = GetComponent<Animator> ();
 		Physics2D.queriesStartInColliders = false;
+
+		transform.position = GameManager.instance.respawnPoints [RoomManager.room].transform.position;
+		RoomManager.instance.GoToRoom (RoomManager.room);
 	}
 
 	void Update() {
@@ -71,14 +74,14 @@ public class Player : MonoBehaviour {
 			}
 			if (IsKitchenInFrontOfPlayer (hitInfo)) {
 				if (Input.GetKeyUp (KeyCode.Return)) {
-					HUDManager.instance.LaunchCooking ();
+					GameManager.instance.hudManager.LaunchCooking ();
 					SoundManager.instance.PlaySingle (kitchenSound);
 					cooking = true;
 				}
 			}
 		} else if (cooking){
 			if (Input.GetKeyDown (KeyCode.Escape)) {
-				HUDManager.instance.CancelCooking ();
+				GameManager.instance.hudManager.CancelCooking ();
 				cooking = false;
 			}
 		}
@@ -122,7 +125,7 @@ public class Player : MonoBehaviour {
 		if (other.tag == "Ingredient") {
 			other.gameObject.GetComponent<Ingredient> ().Collect ();
 			SoundManager.instance.RandomizeSfx (pickUpSound, pickUpSound2);
-			HUDManager.instance.UpdateIngredients ();
+			GameManager.instance.hudManager.UpdateIngredients ();
 		} else if (other.name == "RoomTrigger") {
 			RoomManager.instance.GoToRoom (int.Parse (other.tag.Split (" " [0]) [1]));
 		}
@@ -157,7 +160,7 @@ public class Player : MonoBehaviour {
 	}
 
 	void DropRecipe(int index) {
-		Recipe.Type recipe = HUDManager.instance.GetCookedRecipeOnSlotIndex (index);
+		Recipe.Type recipe = GameManager.instance.hudManager.GetCookedRecipeOnSlotIndex (index);
 		if (recipe != null) {
 			if (recipe.Equals (Recipe.Type.Sponge)) {
 				Instantiate (sponge, transform.position, Quaternion.identity);
@@ -179,6 +182,10 @@ public class Player : MonoBehaviour {
 				Instantiate (waffles, transform.position, Quaternion.identity);
 			}
 		}
+	}
+
+	public void Spawn(Vector3 spawnPosition) {
+		transform.position = spawnPosition;
 	}
 
 }

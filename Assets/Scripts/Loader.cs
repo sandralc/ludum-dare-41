@@ -5,9 +5,9 @@ using UnityEngine;
 public class Loader : MonoBehaviour {
 
 	public GameObject gameManager;
-	public GameObject hudManager;
 	public GameObject roomManager;
 	public GameObject soundManager;
+	public HUDManager hudManager;
 	public Player player;
 
 	// Use this for initialization
@@ -16,8 +16,13 @@ public class Loader : MonoBehaviour {
 			Instantiate (gameManager);
 		GameManager.instance.player = player;
 
-		if (HUDManager.instance == null)
-			Instantiate (hudManager);
+		GameManager.instance.hudManager = hudManager;
+
+		if (RoomManager.instance == null)
+			Instantiate (roomManager);
+
+		if (SoundManager.instance == null)
+			Instantiate (soundManager);
 		
 	}
 }
