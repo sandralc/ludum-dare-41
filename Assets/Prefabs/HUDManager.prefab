@@ -33,8 +33,8 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1162173281219802}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 337.90317, y: 179.42929, z: 7.4668145}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 337.55463, y: 178.1798, z: 7.248131}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -61,3 +61,9 @@ MonoBehaviour:
   sponge: {fileID: 21300092, guid: 8d3a87af594434c24af5da1a9a7ccdb5, type: 3}
   sugarCookies: {fileID: 21300096, guid: 8d3a87af594434c24af5da1a9a7ccdb5, type: 3}
   waffles: {fileID: 21300098, guid: 8d3a87af594434c24af5da1a9a7ccdb5, type: 3}
+  hud: {fileID: 0}
+  recipePaperPrefab: {fileID: 1944174223707256, guid: 83cd7ad7d12a7450793e684dce266a7c,
+    type: 2}
+  selectSound: {fileID: 8300000, guid: e72502c45a89a4d19ac6fc4869cdc5aa, type: 3}
+  nopeSound1: {fileID: 8300000, guid: 30fcc7b053f714228a99fbf0f12d9834, type: 3}
+  nopeSound2: {fileID: 8300000, guid: 43cfd9f4f8546450fbdd9f9bc036c4eb, type: 3}

@@ -128,6 +128,14 @@ public class Player : MonoBehaviour {
 			GameManager.instance.hudManager.UpdateIngredients ();
 		} else if (other.name == "RoomTrigger") {
 			RoomManager.instance.GoToRoom (int.Parse (other.tag.Split (" " [0]) [1]));
+		} else if (other.tag == "RecipePaper") {
+			string recipePaperName = other.name;
+			int recipePaperIndex = int.Parse(recipePaperName.Split (" "[0]) [1]);
+			if (!GameManager.collectedRecipePapers.ContainsKey (recipePaperIndex)) {
+				GameManager.collectedRecipePapers.Add (recipePaperIndex, other.gameObject.GetComponent<SpriteRenderer> ().sprite);
+			}
+			GameManager.instance.hudManager.UpdateRecipePapersScore ();
+			Destroy (other.gameObject);
 		}
 	}
 

@@ -18,11 +18,13 @@ public class HUDManager : MonoBehaviour {
 	public Sprite waffles;
 
 	public GameObject hud;
+	public GameObject recipePaperPrefab;
 
 	public AudioClip selectSound;
 	public AudioClip nopeSound1;
 	public AudioClip nopeSound2;
 
+	private GameObject scorePanel;
 	private Text score;
 	private Image[] recipeSlots;
 	private Dictionary<Ingredient.Type, Text> ingredientSlots;
@@ -48,7 +50,8 @@ public class HUDManager : MonoBehaviour {
 	}
 
 	void InitHUD() {
-		score = hud.transform.Find ("Score").GetComponent<Text> ();
+		scorePanel = hud.transform.Find ("Score/RecipePapers").gameObject;
+		score = hud.transform.Find ("Score/Text").GetComponent<Text> ();
 
 		recipeSlots = new Image[4];
 		recipeSlots [0] = hud.transform.Find ("Cooked Recipes/Slot 1/Recipe").GetComponent<Image>();
@@ -116,13 +119,9 @@ public class HUDManager : MonoBehaviour {
 	}
 
 	void Start() {
-		UpdateScore ();
 		UpdateIngredients ();
 		UpdateCookedRecipes ();
-	}
-
-	public void UpdateScore() {
-		score.text = "Score: " + GameManager.instance.score;
+		UpdateRecipePapersScore ();
 	}
 
 	public void UpdateIngredients() {
@@ -174,8 +173,18 @@ public class HUDManager : MonoBehaviour {
 		}
 	}
 
+	public void UpdateRecipePapersScore() {
+		int totalCollected = 0;
+		foreach (KeyValuePair<int, Sprite> recipePaperCollected in GameManager.collectedRecipePapers) {
+			Image recipePaperInstance = Instantiate (recipePaperPrefab, new Vector3 (0f, 0f, 0f), Quaternion.identity).GetComponent<Image>();
+			recipePaperInstance.transform.SetParent (scorePanel.transform, false);
+			recipePaperInstance.sprite = recipePaperCollected.Value;
+			totalCollected++;
+		}
+		score.text = totalCollected + "/10";
+	}
+
 	void UpdateIngredientCookingButtonsText() {
-		Debug.Log ("Updating all the ingredieents");
 		foreach (KeyValuePair<Ingredient.Type, Text> ingredientText in ingredientCookingButtonsText) {
 			ingredientCookingButtonsText [ingredientText.Key].text = "x" + GameManager.collectedIngredients [ingredientText.Key];
 		}

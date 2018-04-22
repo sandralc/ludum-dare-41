@@ -11,9 +11,9 @@ public class GameManager : MonoBehaviour {
 	public GameObject[] respawnPoints;
 
 	public static Dictionary<Ingredient.Type, int> collectedIngredients;
+	public static Dictionary<int, Sprite> collectedRecipePapers;
 
 	[HideInInspector]public Player player;
-	[HideInInspector]public int score = 0;
 
 	void Awake () {
 		if (instance == null)
@@ -31,6 +31,9 @@ public class GameManager : MonoBehaviour {
 			for (int i = 0; i < ingredientTypeNames.Length; i++) {
 				collectedIngredients.Add ((Ingredient.Type)System.Enum.Parse (typeof(Ingredient.Type), ingredientTypeNames [i]), 0);
 			}
+		}
+		if (collectedRecipePapers == null) {
+			collectedRecipePapers = new Dictionary<int, Sprite> ();
 		}
 	}
 	
