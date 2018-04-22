@@ -78,7 +78,7 @@ public class Enemy : MonoBehaviour {
 	void Update () {
 
 		if (state.Equals (State.Patrol)) {
-			RaycastHit2D hitInfo = Physics2D.Raycast (transform.position, transform.up, overallDetectionRange);
+			RaycastHit2D hitInfo = Physics2D.Raycast (transform.position, transform.up, overallDetectionRange, enemiesIgnore);
 			if (hitInfo.collider != null && !hitInfo.collider.CompareTag("Ingredient") && !hitInfo.collider.CompareTag("RecipePaper") && !hitInfo.collider.tag.Contains("Room")) {
 				Debug.DrawLine (transform.position, hitInfo.point, Color.red);
 				lineOfSight.SetPosition (1, hitInfo.point);
@@ -120,13 +120,13 @@ public class Enemy : MonoBehaviour {
 		state = State.Eat;
 		SoundManager.instance.PlaySingle (eatSound);
 		GameManager.instance.player.chased = false;
-//		RoomManager.instance.CanLeaveRoom ();
+		RoomManager.instance.CanLeaveRoom ();
 		food = hitInfo.transform.gameObject;
 		foodPosition = hitInfo.point;
 	}
 
 	void Chase() {
-		RaycastHit2D hitInfo = Physics2D.Raycast (transform.position, target.position, overallDetectionRange);
+		RaycastHit2D hitInfo = Physics2D.Raycast (transform.position, target.position, overallDetectionRange, enemiesIgnore);
 
 		if (hitInfo.collider != null && hitInfo.collider.CompareTag ("Recipe")) {
 			if (favouriteDessert.Length == 0) {

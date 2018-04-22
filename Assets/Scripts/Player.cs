@@ -152,6 +152,9 @@ public class Player : MonoBehaviour {
 			GameManager.instance.hudManager.UpdateRecipePapersScore ();
 			SoundManager.instance.PlaySingle (aahSound);
 			Destroy (other.gameObject);
+			if (recipePaperIndex == 9) {
+				GameManager.instance.Win ();
+			}
 		}
 	}
 

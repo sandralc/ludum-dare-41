@@ -45,6 +45,10 @@ public class GameManager : MonoBehaviour {
 		SceneManager.LoadScene(0);
 	}
 
+	public void Win() {
+		
+	}
+
 	void Respawn() {
 
 		player.Spawn (player.respawnPoints [RoomManager.instance.GetCurrentRoom ()].transform.position);
