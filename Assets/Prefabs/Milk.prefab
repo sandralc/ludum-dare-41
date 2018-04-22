@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212698729228921578}
   - component: {fileID: 61880930310375954}
   - component: {fileID: 114981120544893020}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Milk
   m_TagString: Ingredient
   m_Icon: {fileID: 0}

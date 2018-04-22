@@ -289,4 +289,8 @@ public class HUDManager : MonoBehaviour {
 		UpdateCookedRecipes();
 	}
 
+	public bool IsCookingPanelEnabled() {
+		return cookingPanel.activeSelf;
+	}
+
 }

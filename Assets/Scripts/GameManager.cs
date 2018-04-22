@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour {
 			collectedIngredients = new Dictionary<Ingredient.Type, int> ();
 			string[] ingredientTypeNames = System.Enum.GetNames (typeof(Ingredient.Type));
 			for (int i = 0; i < ingredientTypeNames.Length; i++) {
-				collectedIngredients.Add ((Ingredient.Type)System.Enum.Parse (typeof(Ingredient.Type), ingredientTypeNames [i]), 0);
+				collectedIngredients.Add ((Ingredient.Type)System.Enum.Parse (typeof(Ingredient.Type), ingredientTypeNames [i]), 1);
 			}
 		}
 		if (collectedRecipePapers == null) {
@@ -48,5 +48,11 @@ public class GameManager : MonoBehaviour {
 	void Respawn() {
 
 		player.Spawn (player.respawnPoints [RoomManager.instance.GetCurrentRoom ()].transform.position);
+	}
+
+	void Update() {
+		if (Input.GetKeyDown (KeyCode.Escape) && !hudManager.IsCookingPanelEnabled()) {
+			Application.Quit ();
+		}
 	}
 }

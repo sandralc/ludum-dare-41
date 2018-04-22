@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212781324909868580}
   - component: {fileID: 61800921049330158}
   - component: {fileID: 114873428501421832}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Cream
   m_TagString: Ingredient
   m_Icon: {fileID: 0}

@@ -48,6 +48,8 @@ public class Enemy : MonoBehaviour {
 	private float initialOrientation;
 	private Vector3 initialPosition;
 
+	public LayerMask enemiesIgnore;
+
 	private BoxCollider2D boxCollider;
 	private Rigidbody2D rb2D;
 	private Animator animator;
@@ -85,7 +87,7 @@ public class Enemy : MonoBehaviour {
 					SoundManager.instance.PlaySingle (detectedSound);
 					lineOfSight.colorGradient = redColor;
 					state = State.Follow;
-//					RoomManager.instance.CantLeaveRoom ();
+					RoomManager.instance.CantLeaveRoom ();
 					GameManager.instance.player.chased = true;
 				}
 				if (hitInfo.collider.CompareTag ("Recipe")) {

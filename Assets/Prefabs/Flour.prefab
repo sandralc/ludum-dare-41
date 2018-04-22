@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212656049636443318}
   - component: {fileID: 61132773263263532}
   - component: {fileID: 114597487363722404}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Flour
   m_TagString: Ingredient
   m_Icon: {fileID: 0}

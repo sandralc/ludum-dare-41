@@ -21,7 +21,7 @@ GameObject:
   - component: {fileID: 4035871541879908}
   - component: {fileID: 212392687958775928}
   - component: {fileID: 61394544799008566}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Recipe 2
   m_TagString: RecipePaper
   m_Icon: {fileID: 0}

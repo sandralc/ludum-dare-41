@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212203806156577968}
   - component: {fileID: 61007578602806868}
   - component: {fileID: 114285415882303950}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Sugar
   m_TagString: Ingredient
   m_Icon: {fileID: 0}

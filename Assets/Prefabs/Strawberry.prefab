@@ -22,7 +22,7 @@ GameObject:
   - component: {fileID: 212713082318976354}
   - component: {fileID: 61470533510841096}
   - component: {fileID: 114819302664774080}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Strawberry
   m_TagString: Ingredient
   m_Icon: {fileID: 0}
