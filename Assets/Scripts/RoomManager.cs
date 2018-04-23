@@ -6,7 +6,7 @@ using UnityEngine.Tilemaps;
 public class RoomManager : MonoBehaviour {
 
 	public static RoomManager instance = null;
-	public static int room = 9;
+	public static int room = 4;
 
 	public GameObject[] rooms;
 	private TilemapCollider2D[] roomDoorsTilemap;
@@ -55,12 +55,19 @@ public class RoomManager : MonoBehaviour {
 		}
 	}
 
+	public void GoToRoomWhichCanLeave(int roomIndex) {
+		GoToRoom(roomIndex);
+		CanLeaveRoom();
+	}
+
 	public void GoToRoom(int roomIndex) {
 		Debug.Log ("Going to room " + roomIndex);
 		rooms [room].SetActive (false);
 		rooms [roomIndex].SetActive (true);
 		room = roomIndex;
-		CanLeaveRoom ();
+		if (roomIndex != room)
+			CanLeaveRoom ();
+		GameManager.instance.hudManager.UpdateRoomIndicator ();
 	}
 
 	public int GetCurrentRoom() {

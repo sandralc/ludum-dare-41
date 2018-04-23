@@ -24,6 +24,7 @@ public class HUDManager : MonoBehaviour {
 	public AudioClip selectSound;
 	public AudioClip nopeSound1;
 	public AudioClip nopeSound2;
+	public AudioClip uuuhSound;
 
 	private GameObject scorePanel;
 	private Text score;
@@ -35,6 +36,7 @@ public class HUDManager : MonoBehaviour {
 	private Dictionary<Ingredient.Type, Text> ingredientCookingButtonsText;
 	private Text recipeText;
 	private Button cookButton;
+	private Text roomIndicator;
 
 	private Dictionary<Ingredient.Type, int> recipe;
 	private Dictionary<Recipe.Type, string> validRecipes;
@@ -42,17 +44,32 @@ public class HUDManager : MonoBehaviour {
 
 	private GameObject selectedGameObjByDefault; //Highlighted first!
 
+	private GameObject mainPanel;
+	private Button playButton;
+
+	private Text roomText;
+	private GameObject roomImage;
+	public float roomStartDelay = 2f;
+
 	// Use this for initialization
 	void Awake () {
 		selectedGameObjByDefault = EventSystem.current.currentSelectedGameObject;
 		InitHUD ();
 		cookingPanel.SetActive (false);
 		InitValidRecipes ();
+
+		roomImage = GameObject.Find ("MessagePanel");
+		roomText = roomImage.GetComponentInChildren<Text>();
+		roomImage.SetActive (false);
+	
 	}
 
 	void InitHUD() {
 		scorePanel = hud.transform.Find ("Score/RecipePapers").gameObject;
 		score = hud.transform.Find ("Score/Text").GetComponent<Text> ();
+
+		mainPanel = GameObject.Find ("Main Menu");
+		playButton = GameObject.Find("Play Button").GetComponent<Button>();
 
 		recipeSlots = new Image[4];
 		recipeSlots [0] = hud.transform.Find ("Cooked Recipes/Slot 1/Recipe").GetComponent<Image>();
@@ -108,6 +125,7 @@ public class HUDManager : MonoBehaviour {
 					Debug.Log("Successfully cooked a new recipe! " + validRecipe.ToString());
 					UpdateCookedRecipes();
 					LaunchCooking();
+					SoundManager.instance.PlaySingle(uuuhSound);
 				}
 			} else {
 				SoundManager.instance.PlaySingle(nopeSound1);
@@ -115,14 +133,23 @@ public class HUDManager : MonoBehaviour {
 			}
 		});
 
+		roomIndicator = hud.transform.Find ("Room Indicator").GetComponent<Text> ();
+
 		InitIngredientCookingButtons ();
 		UpdateIngredientCookingButtonsText ();
+
+		mainPanel.SetActive (true);
 	}
 
 	void Start() {
 		UpdateIngredients ();
 		UpdateCookedRecipes ();
 		UpdateRecipePapersScore ();
+		UpdateRoomIndicator ();
+	}
+
+	public void UpdateRoomIndicator() {
+		roomIndicator.text = "ROOM " + RoomManager.room;
 	}
 
 	public void UpdateIngredients() {
@@ -175,6 +202,9 @@ public class HUDManager : MonoBehaviour {
 	}
 
 	public void UpdateRecipePapersScore() {
+		foreach (Transform child in scorePanel.transform) {
+			Destroy (child.gameObject);
+		}
 		int totalCollected = 0;
 		foreach (KeyValuePair<int, Sprite> recipePaperCollected in GameManager.collectedRecipePapers) {
 			Image recipePaperInstance = Instantiate (recipePaperPrefab, new Vector3 (0f, 0f, 0f), Quaternion.identity).GetComponent<Image>();
@@ -289,8 +319,48 @@ public class HUDManager : MonoBehaviour {
 		UpdateCookedRecipes();
 	}
 
-	public bool IsCookingPanelEnabled() {
-		return cookingPanel.activeSelf;
+	public void GameOver() {
+		float randomSentence = Random.value;
+		if (randomSentence < 0.33) {
+			roomText.text = "Hey, you weirdough!";
+		} else if (randomSentence < 0.66) {
+			roomText.text = "Uh uh";
+		} else if (randomSentence < 1) {
+			roomText.text = "Caught in the act!";
+		}
+		roomImage.SetActive (true);
+		if (!GameManager.mainMenu)
+			mainPanel.SetActive (false);
+		Invoke ("HidePanel", roomStartDelay);
+	}
+
+	void OnLevelWasLoaded() {
+		if (!GameManager.mainMenu)
+			GameOver ();
+	}
+
+	void HidePanel() {
+		roomImage.SetActive (false);
+	}
+
+	public void Win() {
+		roomText.text = "You did it!";
+		roomImage.SetActive (true);
+		Invoke ("MainMenu", roomStartDelay * 2f);
+		GameManager.mainMenu = true;
+	}
+
+	void MainMenu() {
+		mainPanel.SetActive (true);
+		GameManager.mainMenu = false;
+	}
+		
+
+	void Update() {
+		if (Input.GetKeyDown (KeyCode.Return) && mainPanel.gameObject.activeSelf) {
+			mainPanel.SetActive(false);
+			GameManager.instance.player.hidden = false;
+		}
 	}
 
 }

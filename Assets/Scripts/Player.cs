@@ -58,7 +58,7 @@ public class Player : MonoBehaviour {
 		}
 
 		transform.position = respawnPoints [RoomManager.room].transform.position;
-		RoomManager.instance.GoToRoom (RoomManager.room);
+		RoomManager.instance.GoToRoomWhichCanLeave (RoomManager.room);
 	}
 
 	void Update() {
@@ -91,7 +91,7 @@ public class Player : MonoBehaviour {
 				}
 			}
 		} else if (cooking){
-			if (Input.GetKeyDown (KeyCode.Escape)) {
+			if (Input.GetKeyDown (KeyCode.Backspace)) {
 				GameManager.instance.hudManager.CancelCooking ();
 				cooking = false;
 			}
